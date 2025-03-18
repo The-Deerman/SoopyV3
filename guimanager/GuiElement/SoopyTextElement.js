@@ -14,8 +14,8 @@ if (!GlStateManager) {
 
 let Framebuffer = Java.type("net.minecraft.client.shader.Framebuffer")
 const DefaultVertexFormats = Java.type("net.minecraft.client.renderer.vertex.DefaultVertexFormats")
-let Tessellator = Java.type("net.minecraft.client.renderer.Tessellator").func_178181_a()
-let WorldRenderer = Tessellator.func_178180_c()
+let Tessellator = Java.type("net.minecraft.client.render.Tessellator").getInstance()
+let WorldRenderer = Tessellator.getBuffer()
 const OpenGlHelper = Java.type("net.minecraft.client.renderer.OpenGlHelper")
 const EXTFramebufferObject = Java.type("org.lwjgl.opengl.EXTFramebufferObject")
 
