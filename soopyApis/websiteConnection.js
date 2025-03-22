@@ -58,7 +58,7 @@ class WebsiteConnection {
                 }
             }
 
-            this.writer.println(data.replace(/\n/g, ""));
+            this.writer.println();
         }).start()
     }
 
@@ -115,7 +115,7 @@ class WebsiteConnection {
                 }
             }
             let shouldReCon = false
-            if (this.connected && shouldCont) {
+            if (!this.connected && shouldCont) {
                 shouldReCon = true
             }
             if (shouldReCon) {
@@ -130,7 +130,6 @@ class WebsiteConnection {
 
     disconnect() {
         //disconnect from server
-
         if (this.socket) this.socket.close();
         this.socket = null;
         this.connected = false;
@@ -153,13 +152,13 @@ class WebsiteConnection {
             //THANKS FORK
             let serverId = java.util.UUID.randomUUID().toString().replace(/-/g, "")
             try {
-                Client.getMinecraft().func_152347_ac().joinServer(Client.getMinecraft().func_110432_I().func_148256_e(), Client.getMinecraft().func_110432_I().func_148254_d(), serverId)
+                Client.getMinecraft().getSessionService().joinServer(Player.getUUID(), Client.getMinecraft().getSession().getAccessToken(), serverId)
             } catch (e) { serverId = undefined }
 
             this.sendData(this.createPacket(serverData.packetTypesReverse.connectionSuccess, 0, {
                 username: Player.getName(),
-                uuid: Player.getUUID(),
-                serverId
+                uuid: Player.getUUID().toString(),
+                serverId: serverId
             }))
 
             Object.values(this.handlers).forEach(handler => handler._onConnect())
