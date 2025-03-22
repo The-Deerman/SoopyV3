@@ -16,7 +16,7 @@ let ksPath = JPaths.get(JSystem.getProperty("java.home"), "lib", "security", "ca
 keyStore.load(JFiles.newInputStream(ksPath), new JString("changeit").toCharArray());
 let cf = JCertificateFactory.getInstance("X.509");
 for (let i of certificates) {
-    let pathStr = `${Config.modulesFolder}/SoopyV2/utils/certs/${i}`;
+    let pathStr = `${com.chattriggers.ctjs.CTJS.MODULES_FOLDER}/SoopyV2/utils/certs/${i}`;
     let path = JPaths.get(pathStr);
     let data = JFiles.readAllBytes(path);
     let cert = cf.generateCertificate(new JByteArrayInputStream(data));
