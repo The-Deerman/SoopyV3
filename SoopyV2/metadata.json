@@ -1,12 +1,10 @@
 {
-  "$schema": "../../CTAutocomplete/schema.json",
   "creator": "The_Deerman and Soopyboo32",
-  "author": {The_Deerman, Soopyboo32},
+  "author": "The_Deerman and Soopyboo32",
   "entry": "index.js",
   "description": "/SoopyV2",
   "name": "SoopyV2",
   "version": "2.2.5",
-  "versionId": 329,
   "requires": [
     "soopyApis",
     "soopyAddonsData",
