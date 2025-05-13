@@ -1,11 +1,11 @@
 import NonPooledThread from "./utils/nonPooledThread.js";
 
-if (net.minecraftforge.fml.common.Loader.isModLoaded("soopyv2forge")) {
+if (net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("soopyv3fabric")) {
     new NonPooledThread(() => {
-        while (!Java.type("me.soopyboo32.soopyv2forge.SoopyV2Forge").INSTANCE) {
+        while (!Java.type("me.the_deerman.soopyv3fabric.SoopyV3Fabric").INSTANCE) {
             Thread.sleep(1000);
         }
-        Java.type("me.soopyboo32.soopyv2forge.SoopyV2Forge").INSTANCE.soopyIsInstalled();
+        Java.type("me.the_deerman.soopyv3fabric.SoopyV3Fabric").INSTANCE.soopyIsInstalled();
     }).start();
 }
 
@@ -15,7 +15,6 @@ class SoopyAddons {
         this.FeatureManager.parent = this;
     }
 }
-
 
 let a = register("worldLoad", () => {
     new SoopyAddons;
