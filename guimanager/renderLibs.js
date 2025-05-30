@@ -335,14 +335,14 @@ class RenderLibs {
         GlStateManager.func_179084_k()//GlStateManager.disableBlend()
 
         /* OLD RENDER CODE
-        Renderer.drawRect(Renderer.color(colorR, colorG, colorB),x+borderWidth,y+borderWidth,w-borderWidth*2,h-borderWidth*2)
+        Renderer.drawRect(Renderer.getColor(colorR, colorG, colorB),x+borderWidth,y+borderWidth,w-borderWidth*2,h-borderWidth*2)
+        
+        Renderer.drawRect(Renderer.getColor(colorR-20*(color[3]?-1:1), colorG-20*(color[3]?-1:1), colorB-20*(color[3]?-1:1)),x,y,borderWidth,h)
+        Renderer.drawRect(Renderer.getColor(colorR-20*(color[3]?-1:1), colorG-20*(color[3]?-1:1), colorB-20*(color[3]?-1:1)),x,y,w,borderWidth)
 
-        Renderer.drawRect(Renderer.color(colorR-20*(color[3]?-1:1), colorG-20*(color[3]?-1:1), colorB-20*(color[3]?-1:1)),x,y,borderWidth,h)
-        Renderer.drawRect(Renderer.color(colorR-20*(color[3]?-1:1), colorG-20*(color[3]?-1:1), colorB-20*(color[3]?-1:1)),x,y,w,borderWidth)
-
-        Renderer.drawRect(Renderer.color(colorR-60*(color[3]?-1:1), colorG-60*(color[3]?-1:1), colorB-60*(color[3]?-1:1)),x+w-borderWidth,y,borderWidth,h)
-        Renderer.drawRect(Renderer.color(colorR-60*(color[3]?-1:1), colorG-60*(color[3]?-1:1), colorB-60*(color[3]?-1:1)),x,y+h-borderWidth,w,borderWidth)
         */
+        Renderer.drawRect(Renderer.getColor(colorR-60*(color[3]?-1:1), colorG-60*(color[3]?-1:1), colorB-60*(color[3]?-1:1)),x+w-borderWidth,y,borderWidth,h)
+        Renderer.drawRect(Renderer.getColor(colorR-60*(color[3]?-1:1), colorG-60*(color[3]?-1:1), colorB-60*(color[3]?-1:1)),x,y+h-borderWidth,w,borderWidth)
     }
     /** 
      * Draws a Block of text with markup at a location
@@ -385,7 +385,7 @@ class RenderLibs {
             if (line.startsWith("```")) {
                 isCodeBlock = !isCodeBlock
                 if (!isCodeBlock) {
-                    if (actuallyRender) Renderer.drawRect(Renderer.color(0, 0, 0, 50), x, y + yOff, width, 2)
+                    if (actuallyRender) Renderer.drawRect(Renderer.getColor(0, 0, 0, 50), x, y + yOff, width, 2)
                     yOff += 2
                 } else {
                     codeblockType = line.substr(3)
@@ -396,7 +396,7 @@ class RenderLibs {
                 if (isCodeBlock) {
                     let lastColor = 8
                     this.splitStringAtWidth(this.addCodeBlockColoring(line.replace(/&/g, "&⭍"), codeblockType), width - 4).forEach((line2) => {
-                        if (actuallyRender) Renderer.drawRect(Renderer.color(0, 0, 0, 50), x, y + yOff, width, 10)
+                        if (actuallyRender) Renderer.drawRect(Renderer.getColor(0, 0, 0, 50), x, y + yOff, width, 10)
                         if (actuallyRender) this.drawString("&" + lastColor + line2, x + 2, y + yOff + 2, 1)
                         yOff += 10
 

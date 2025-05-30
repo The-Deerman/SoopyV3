@@ -135,7 +135,7 @@ class SoopyTextElement extends SoopyGuiElement {
 
                 GlStateManager.func_179120_a(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);//tryBlendFuncSeparate
 
-                // Renderer.drawRect(Renderer.color(255, 0, 0, 50), this.location.getXExact(), this.location.getYExact(), this.location.getXExact()+this.imagew/Renderer.screen.getScale(), this.location.getYExact()+this.imageh/Renderer.screen.getScale())
+                // Renderer.drawRect(Renderer.getColor(255, 0, 0, 50), this.location.getXExact(), this.location.getYExact(), this.location.getXExact()+this.imagew/Renderer.screen.getScale(), this.location.getYExact()+this.imageh/Renderer.screen.getScale())
             }
         })
 

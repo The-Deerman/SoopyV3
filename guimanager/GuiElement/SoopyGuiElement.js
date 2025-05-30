@@ -191,7 +191,7 @@ class SoopyGuiElement {
                     }
                 }
                 Renderer.translate(0, 0, 10)
-                Renderer.drawRect(this.isDarkThemeEnabled() ? Renderer.color(200, 200, 200) : Renderer.color(0, 0, 0), this.location.getXExact() + this.location.getWidthExact() - this._tempScrollbarWidth.get(), this.location.getYExact() + scrollBarY, this._tempScrollbarWidth.get(), scrollBarHeight)
+                Renderer.drawRect(this.isDarkThemeEnabled() ? Renderer.getColor(200, 200, 200) : Renderer.getColor(0, 0, 0), this.location.getXExact() + this.location.getWidthExact() - this._tempScrollbarWidth.get(), this.location.getYExact() + scrollBarY, this._tempScrollbarWidth.get(), scrollBarHeight)
             } else {
                 this._tempScrollbarWidth.set(0, 200)
             }
@@ -524,7 +524,7 @@ function drawFrameBuffer(framebuffer, x, y, w, h) {
     GlStateManager.func_179120_a(GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_ALPHA); //tryBlendFuncSeparate
     GlStateManager.func_179131_c(1, 1, 1, 1); //color
     framebuffer.func_147612_c(); //bindFramebufferTexture
-    // Renderer.drawRect(Renderer.color(255,0,0,100), x, y, w, h)
+    // Renderer.drawRect(Renderer.getColor(255,0,0,100), x, y, w, h)
     drawTexturedRect(x, y, w, h, 0, 1, 1, 0, GL11.GL_NEAREST);
     GlStateManager.func_179120_a(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0); //tryBlendFuncSeparate
 }

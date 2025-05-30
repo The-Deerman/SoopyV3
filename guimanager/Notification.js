@@ -72,7 +72,7 @@ class Notification {
             renderX -= height - 4
         }
         renderLibs.drawStringResiseWidthBottom(this.title, (Renderer.screen.getWidth() - renderX) + 5, (Renderer.screen.getHeight() - this.renderY) + 15, 2, width - 10)
-        Renderer.drawRect(Renderer.color(20, 30, 40), (Renderer.screen.getWidth() - renderX) + 2, (Renderer.screen.getHeight() - this.renderY) + 29, width - 4, 2)
+        Renderer.drawRect(Renderer.getColor(20, 30, 40), (Renderer.screen.getWidth() - renderX) + 2, (Renderer.screen.getHeight() - this.renderY) + 29, width - 4, 2)
         this.text.forEach((line, i) => {
             if (line) {
                 renderLibs.drawStringResiseWidth(line, Renderer.screen.getWidth() - renderX + 5, Renderer.screen.getHeight() - this.renderY + 34 + 9 * i, 1, width - 10)

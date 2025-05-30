@@ -16,7 +16,7 @@ class ProgressBar extends SoopyBoxElement{
         renderEvent.setHandler(()=>{
             let progressNum = this.progress.get()
 
-            Renderer.drawRect(Renderer.color(0,255,0), this.innerObject.location.getXExact(), this.innerObject.location.getYExact(), this.innerObject.location.getWidthExact()*progressNum, this.innerObject.location.getHeightExact())
+            Renderer.drawRect(Renderer.getColor(0,255,0), this.innerObject.location.getXExact(), this.innerObject.location.getYExact(), this.innerObject.location.getWidthExact()*progressNum, this.innerObject.location.getHeightExact())
 
             if(this.showPercentageVal){
                 Renderer.drawString("§0" + (progressNum*100).toFixed(1) + "%", this.innerObject.location.getXExact()+this.innerObject.location.getWidthExact()/2-Renderer.getStringWidth((progressNum*100).toFixed(1) + "%")/2, this.innerObject.location.getYExact()+this.innerObject.location.getHeightExact()/2-8/2)
