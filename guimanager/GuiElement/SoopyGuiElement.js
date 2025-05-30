@@ -190,8 +190,10 @@ class SoopyGuiElement {
                         this._tempScrollbarWidth.set(4, 200)
                     }
                 }
+                Renderer.pushMatrix()
                 Renderer.translate(0, 0, 10)
                 Renderer.drawRect(this.isDarkThemeEnabled() ? Renderer.getColor(200, 200, 200) : Renderer.getColor(0, 0, 0), this.location.getXExact() + this.location.getWidthExact() - this._tempScrollbarWidth.get(), this.location.getYExact() + scrollBarY, this._tempScrollbarWidth.get(), scrollBarHeight)
+                Renderer.popMatrix()
             } else {
                 this._tempScrollbarWidth.set(0, 200)
             }

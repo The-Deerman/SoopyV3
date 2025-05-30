@@ -286,8 +286,10 @@ class SoopyGui {
                 let backgroundColor = -267386864
 
                 function drawRectStupid(color, x1, y1, x2, y2) {
+                    Renderer.pushMatrix()  
                     Renderer.translate(0, 0, 1000)
                     Renderer.drawRect(color, x1, y1, x2 - x1, y2 - y1)
+                    Renderer.popMatrix()
                 }
 
                 drawRectStupid(backgroundColor, l1 - 3, i2 - 4, l1 + maxWidth + 3, i2 - 3)
@@ -302,8 +304,10 @@ class SoopyGui {
                 drawRectStupid(borderColor, l1 - 3, i2 + k + 2, l1 + maxWidth + 3, i2 + k + 3)
 
                 lore.forEach((line, i) => {
+                    Renderer.pushMatrix()
                     Renderer.translate(0, 0, 1000)
                     Renderer.drawStringWithShadow(line, l1, i2)
+                    Renderer.popMatrix()
 
                     if (i === 0) i2 += 2
                     i2 += 10

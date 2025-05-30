@@ -26,10 +26,11 @@ class BoxWithLoading extends SoopyBoxElement {
             let rotation = (Date.now() - startTime) / 2
 
             let size = Math.min(this.location.getWidthExact(), this.location.getHeightExact())
-
+            Renderer.pushMatrix()
             Renderer.translate(this.location.getXExact() + this.location.getWidthExact() / 2, this.location.getYExact() + this.location.getHeightExact() / 2)
             Renderer.rotate(rotation)
             loadingImage.draw(-size / 2, -size / 2, size, size)
+            Renderer.popMatrix()
         })
 
         this.events.push(renderEvent)

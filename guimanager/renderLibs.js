@@ -99,8 +99,10 @@ class RenderLibs {
      * @param {Number} scale The scale of the string (1 = default, 2=double, ect) 
      */
     drawString = function (text, x, y, scale) {
+        Renderer.pushMatrix()
         Renderer.scale(scale, scale)
         Renderer.drawString(text || "undefined", x / scale, y / scale)
+        Renderer.popMatrix()
     }
 
     /**
@@ -111,8 +113,10 @@ class RenderLibs {
      * @param {Number} scale The scale of the string (1 = default, 2=double, ect) 
      */
     drawStringShadow = function (text, x, y, scale) {
+        Renderer.pushMatrix()
         Renderer.scale(scale, scale)
         Renderer.drawStringWithShadow(text || "undefined", x / scale, y / scale)
+        Renderer.popMatrix()
     }
     /**
      * Draws a string at a location with a scale (rendering from top middle)

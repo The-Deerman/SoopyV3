@@ -23,9 +23,10 @@ class BoxWithGear extends SoopyBoxElement {
             if (!gearImage) return
 
             let size = Math.min(this.location.getWidthExact(), this.location.getHeightExact())
-
+            Renderer.pushMatrix()
             Renderer.translate(this.location.getXExact() + this.location.getWidthExact() / 2, this.location.getYExact() + this.location.getHeightExact() / 2)
             gearImage.draw(-size / 2, -size / 2, size, size)
+            Renderer.popMatrix()
         })
 
         this.events.push(renderEvent)
