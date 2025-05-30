@@ -4,7 +4,7 @@ const { default: RenderLib2D } = require("./renderLib2d");
 
 if (!GlStateManager) {
     var GL11 = Java.type("org.lwjgl.opengl.GL11");
-    var GlStateManager = Java.type("net.minecraft.client.renderer.GlStateManager");
+    var GlStateManager = Java.type("com.mojang.blaze3d.platform.GlStateManager");
 }
 let ret = {
     HSVtoRGB: function (h, s, v) {

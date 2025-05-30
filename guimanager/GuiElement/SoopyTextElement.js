@@ -8,7 +8,7 @@ import SoopyNumber from "../Classes/SoopyNumber"
 import renderLibs from "../renderLibs";
 if (!GlStateManager) {
     var GL11 = Java.type("org.lwjgl.opengl.GL11"); //using var so it goes to global scope
-    var GlStateManager = Java.type("net.minecraft.client.renderer.GlStateManager");
+    var GlStateManager = Java.type("com.mojang.blaze3d.platform.GlStateManager");
 }
 
 
