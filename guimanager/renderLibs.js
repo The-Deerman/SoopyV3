@@ -6,7 +6,7 @@ if (!GlStateManager) {
     var GlStateManager = Java.type("net.minecraft.client.renderer.GlStateManager");
 }
 
-const DefaultVertexFormats = Java.type("net.minecraft.client.renderer.vertex.DefaultVertexFormats")
+const DefaultVertexFormats = Java.type("net.minecraft.client.render.VertexFormats")
 
 let imageRegex = /!\[.*?\]\((.*?)\)/g
 let urlRegex = /\[(.*?)\]\(.*?\)/g

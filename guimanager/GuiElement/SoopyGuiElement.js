@@ -12,7 +12,7 @@ if (!WorldRenderer) {
     var WorldRenderer = MCTessellator.getBuffer()
 }
 if (!DefaultVertexFormats) {
-    var DefaultVertexFormats = Java.type("net.minecraft.client.renderer.vertex.DefaultVertexFormats")
+    var DefaultVertexFormats = Java.type("net.minecraft.client.render.VertexFormats")
 }
 if (!OpenGlHelper) {
     var OpenGlHelper = Java.type("net.minecraft.client.renderer.OpenGlHelper")
