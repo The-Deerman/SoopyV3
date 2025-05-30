@@ -18,7 +18,7 @@ if (!OpenGlHelper) {
     var OpenGlHelper = Java.type("net.minecraft.client.renderer.OpenGlHelper")
 }
 
-let Framebuffer = Java.type("net.minecraft.client.shader.Framebuffer")
+let Framebuffer = Java.type("net.minecraft.client.gl.Framebuffer")
 import Enum from "../Enum"
 import SoopyEventListener from "../EventListener/SoopyEventListener"
 import SoopyPosition from "../Classes/SoopyPosition"

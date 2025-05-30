@@ -12,7 +12,7 @@ if (!GlStateManager) {
 }
 
 
-let Framebuffer = Java.type("net.minecraft.client.shader.Framebuffer")
+let Framebuffer = Java.type("net.minecraft.client.gl.Framebuffer")
 const DefaultVertexFormats = Java.type("net.minecraft.client.render.VertexFormats")
 let Tessellator = Java.type("net.minecraft.client.render.Tessellator").getInstance()
 let WorldRenderer = Tessellator.getBuffer()
