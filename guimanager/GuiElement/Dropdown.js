@@ -31,8 +31,8 @@ class Dropdown extends BoxWithText {
             let thisH = this.location.getHeightExact()
 
 
-            Renderer.drawLine(Renderer.color(0, 0, 0), thisX + thisW * 0.95 - this.points[0].get() * thisW * 0.1 - thisW * 0.05, thisY + thisH * 2 / 5, thisX + thisW * 0.95 - this.points[1].get() * thisW * 0.1 - thisW * 0.05, thisY + thisH * 3 / 5, 1)
-            Renderer.drawLine(Renderer.color(0, 0, 0), thisX + thisW * 0.95 - this.points[2].get() * thisW * 0.1 - thisW * 0.05, thisY + thisH * 2 / 5, thisX + thisW * 0.95 - this.points[3].get() * thisW * 0.1 - thisW * 0.05, thisY + thisH * 3 / 5, 1)
+            Renderer.drawLine(Renderer.getColor(0, 0, 0), thisX + thisW * 0.95 - this.points[0].get() * thisW * 0.1 - thisW * 0.05, thisY + thisH * 2 / 5, thisX + thisW * 0.95 - this.points[1].get() * thisW * 0.1 - thisW * 0.05, thisY + thisH * 3 / 5, 1)
+            Renderer.drawLine(Renderer.getColor(0, 0, 0), thisX + thisW * 0.95 - this.points[2].get() * thisW * 0.1 - thisW * 0.05, thisY + thisH * 2 / 5, thisX + thisW * 0.95 - this.points[3].get() * thisW * 0.1 - thisW * 0.05, thisY + thisH * 3 / 5, 1)
         }))
 
         this.addEvent(new SoopyMouseClickEvent().setHandler(() => {

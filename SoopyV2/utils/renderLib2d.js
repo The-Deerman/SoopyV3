@@ -7,7 +7,7 @@ const viewportDims = BufferUtils.createIntBuffer(16);
 
 if (!GlStateManager) {
     var GL11 = Java.type("org.lwjgl.opengl.GL11");
-    var GlStateManager = Java.type("net.minecraft.client.renderer.GlStateManager");
+    var GlStateManager = Java.type("com.mojang.blaze3d.platform.GlStateManager");
 }
 
 const ScaledResolution = net.minecraft.client.gui.ScaledResolution;

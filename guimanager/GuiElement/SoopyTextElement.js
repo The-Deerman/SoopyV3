@@ -8,12 +8,12 @@ import SoopyNumber from "../Classes/SoopyNumber"
 import renderLibs from "../renderLibs";
 if (!GlStateManager) {
     var GL11 = Java.type("org.lwjgl.opengl.GL11"); //using var so it goes to global scope
-    var GlStateManager = Java.type("net.minecraft.client.renderer.GlStateManager");
+    var GlStateManager = Java.type("com.mojang.blaze3d.platform.GlStateManager");
 }
 
 
-let Framebuffer = Java.type("net.minecraft.client.shader.Framebuffer")
-const DefaultVertexFormats = Java.type("net.minecraft.client.renderer.vertex.DefaultVertexFormats")
+let Framebuffer = Java.type("net.minecraft.client.gl.Framebuffer")
+const DefaultVertexFormats = Java.type("net.minecraft.client.render.VertexFormats")
 let Tessellator = Java.type("net.minecraft.client.render.Tessellator").getInstance()
 let WorldRenderer = Tessellator.getBuffer()
 const OpenGlHelper = Java.type("net.minecraft.client.renderer.OpenGlHelper")
@@ -135,7 +135,7 @@ class SoopyTextElement extends SoopyGuiElement {
 
                 GlStateManager.func_179120_a(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);//tryBlendFuncSeparate
 
-                // Renderer.drawRect(Renderer.color(255, 0, 0, 50), this.location.getXExact(), this.location.getYExact(), this.location.getXExact()+this.imagew/Renderer.screen.getScale(), this.location.getYExact()+this.imageh/Renderer.screen.getScale())
+                // Renderer.drawRect(Renderer.getColor(255, 0, 0, 50), this.location.getXExact(), this.location.getYExact(), this.location.getXExact()+this.imagew/Renderer.screen.getScale(), this.location.getYExact()+this.imageh/Renderer.screen.getScale())
             }
         })
 

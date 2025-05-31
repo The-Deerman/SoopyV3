@@ -5,7 +5,7 @@ const { default: SoopyBoxElement } = require("./SoopyBoxElement");
 let gearImage = undefined
 new Thread(() => {
     try {
-        let buffImage = javax.imageio.ImageIO.read(new java.io.File(com.chattriggers.ctjs.CTJS.INSTANCE.configLocation.toURI().normalize().getRawPath().substr(1).replace(/\%20/, " ") + "ChatTriggers/modules/guimanager/Resources/settings_gear.png"))
+        let buffImage = javax.imageio.ImageIO.read(new java.io.File(com.chattriggers.ctjs.CTJS.Companion.configLocation.toURI().normalize().getRawPath().substr(1).replace(/\%20/, " ") + "ChatTriggers/modules/guimanager/Resources/settings_gear.png"))
         gearImage = new Image(buffImage)
     } catch (e) {
         //javax.imageio.IIOException: Can't read input file! for some people idk why
@@ -23,9 +23,10 @@ class BoxWithGear extends SoopyBoxElement {
             if (!gearImage) return
 
             let size = Math.min(this.location.getWidthExact(), this.location.getHeightExact())
-
+            Renderer.pushMatrix()
             Renderer.translate(this.location.getXExact() + this.location.getWidthExact() / 2, this.location.getYExact() + this.location.getHeightExact() / 2)
             gearImage.draw(-size / 2, -size / 2, size, size)
+            Renderer.popMatrix()
         })
 
         this.events.push(renderEvent)

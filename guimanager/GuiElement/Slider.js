@@ -62,9 +62,9 @@ class Slider extends SoopyGuiElement {
 
             let boxX = MathLib.map(this.sliderProgress.get(), this.sliderMin.get(), this.sliderMax.get(), x, x + w)
 
-            Renderer.drawRect(Renderer.color(...sliderLineColor), x, y - h / 2, w, h)
+            Renderer.drawRect(Renderer.getColor(...sliderLineColor), x, y - h / 2, w, h)
 
-            Renderer.drawRect(Renderer.color(...sliderMainColor), boxX - h / 2, this.location.getYExact(), h, this.location.getHeightExact())
+            Renderer.drawRect(Renderer.getColor(...sliderMainColor), boxX - h / 2, this.location.getYExact(), h, this.location.getHeightExact())
         })
         this.events.push(renderEvent)
 

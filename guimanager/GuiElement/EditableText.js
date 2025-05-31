@@ -212,7 +212,7 @@ class EditableText extends SoopyGuiElement {
         if (!this.selected) return
 
         if (Math.floor((Date.now() - this.lastKeyPress) / 1000) % 2 === 0) {
-            Renderer.drawRect(this.isDarkThemeEnabled() ? Renderer.color(200, 200, 200) : Renderer.color(0, 0, 0), textX + this.cursorLoc.x.get(), textY + this.cursorLoc.y.get() - 1 * textScale, 1, 10 * textScale)
+            Renderer.drawRect(this.isDarkThemeEnabled() ? Renderer.getColor(200, 200, 200) : Renderer.getColor(0, 0, 0), textX + this.cursorLoc.x.get(), textY + this.cursorLoc.y.get() - 1 * textScale, 1, 10 * textScale)
         }
     }
 

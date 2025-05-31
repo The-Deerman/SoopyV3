@@ -34,7 +34,7 @@ class Toggle extends SoopyBoxElement{
 
         this.value = false
         renderEvent.setHandler(()=>{
-            let theColor = Renderer.color(this.toggleColor[0].get(), this.toggleColor[1].get(), this.toggleColor[2].get())
+            let theColor = Renderer.getColor(this.toggleColor[0].get(), this.toggleColor[1].get(), this.toggleColor[2].get())
 
             Renderer.drawRect(theColor, this.location.getXExact()+3+(this.location.getWidthExact()-6)*this.toggleProgress.get()/2, this.location.getYExact()+3, (this.location.getWidthExact()-6)/2, this.location.getHeightExact()-6)
         })

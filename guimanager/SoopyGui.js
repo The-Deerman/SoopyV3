@@ -282,12 +282,14 @@ class SoopyGui {
                     i2 = Renderer.screen.getHeight() - k - 6;
                 }
 
-                let borderColor = Renderer.color(35, 1, 85);
+                let borderColor = Renderer.getColor(35, 1, 85);
                 let backgroundColor = -267386864
 
                 function drawRectStupid(color, x1, y1, x2, y2) {
+                    Renderer.pushMatrix()  
                     Renderer.translate(0, 0, 1000)
                     Renderer.drawRect(color, x1, y1, x2 - x1, y2 - y1)
+                    Renderer.popMatrix()
                 }
 
                 drawRectStupid(backgroundColor, l1 - 3, i2 - 4, l1 + maxWidth + 3, i2 - 3)
@@ -302,8 +304,10 @@ class SoopyGui {
                 drawRectStupid(borderColor, l1 - 3, i2 + k + 2, l1 + maxWidth + 3, i2 + k + 3)
 
                 lore.forEach((line, i) => {
+                    Renderer.pushMatrix()
                     Renderer.translate(0, 0, 1000)
                     Renderer.drawStringWithShadow(line, l1, i2)
+                    Renderer.popMatrix()
 
                     if (i === 0) i2 += 2
                     i2 += 10
@@ -378,7 +382,7 @@ class SoopyGui {
      * @param {Number} partialTicks The partialTicks
      */
     _renderBackground(mouseX, mouseY, partialTicks) {
-        Renderer.drawRect(Renderer.color(0, 0, 0, 100), 0, 0, Renderer.screen.getWidth(), Renderer.screen.getHeight())
+        Renderer.drawRect(Renderer.getColor(0, 0, 0, 100), 0, 0, Renderer.screen.getWidth(), Renderer.screen.getHeight())
     }
 }
 

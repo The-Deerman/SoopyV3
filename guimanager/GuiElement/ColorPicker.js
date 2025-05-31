@@ -33,7 +33,7 @@ class ColorPicker extends SoopyBoxElement {
             let thisW = this.innerObject.location.getWidthExact()
             let thisH = this.innerObject.location.getHeightExact()
 
-            Renderer.drawRect(Renderer.color(this.selectedColor[0], this.selectedColor[1], this.selectedColor[2]), thisX, thisY, thisW, thisH)
+            Renderer.drawRect(Renderer.getColor(this.selectedColor[0], this.selectedColor[1], this.selectedColor[2]), thisX, thisY, thisW, thisH)
         }))
 
         this.addEvent(new SoopyMouseClickEvent().setHandler(() => {
@@ -97,8 +97,8 @@ class ColorPicker extends SoopyBoxElement {
             let x = h * mainRenderElement.location.getWidthExact() + mainRenderElement.location.getXExact()
             let y = l * mainRenderElement.location.getHeightExact() + mainRenderElement.location.getYExact()
 
-            Renderer.drawCircle(Renderer.color(255 - this.selectedColor[0], 255 - this.selectedColor[1], 255 - this.selectedColor[2]), x, y, 10, 20)
-            Renderer.drawCircle(Renderer.color(...this.selectedColor), x, y, 7, 20)
+            Renderer.drawCircle(Renderer.getColor(255 - this.selectedColor[0], 255 - this.selectedColor[1], 255 - this.selectedColor[2]), x, y, 10, 20)
+            Renderer.drawCircle(Renderer.getColor(...this.selectedColor), x, y, 7, 20)
         }))
         mainRenderElement.addEvent(new SoopyMouseClickEvent().setHandler((x, y) => {
             if (x < mainRenderElement.location.getXExact()) return
@@ -164,7 +164,7 @@ class ColorPicker extends SoopyBoxElement {
             for (let y = 0; y < 100; y++) {
                 let col = hslToRgb(x / 100, s, y / 100)
 
-                rgbArr[x + y * 100] = Renderer.color(col[0], col[1], col[2])
+                rgbArr[x + y * 100] = Renderer.getColor(col[0], col[1], col[2])
             }
         }
 

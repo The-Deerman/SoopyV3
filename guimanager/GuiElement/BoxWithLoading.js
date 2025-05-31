@@ -7,7 +7,7 @@ let startTime = Date.now()
 let loadingImage = undefined
 new Thread(() => {
     try {
-        let buffImage = javax.imageio.ImageIO.read(new java.io.File(com.chattriggers.ctjs.CTJS.INSTANCE.configLocation.toURI().normalize().getRawPath().substr(1).replace(/\%20/, " ") + "ChatTriggers/modules/guimanager/Resources/loading-icon.jpg"))
+        let buffImage = javax.imageio.ImageIO.read(new java.io.File(com.chattriggers.ctjs.CTJS.Companion.configLocation.toURI().normalize().getRawPath().substr(1).replace(/\%20/, " ") + "ChatTriggers/modules/guimanager/Resources/loading-icon.jpg"))
         loadingImage = new Image(buffImage)
     } catch (e) {
         //javax.imageio.IIOException: Can't read input file! for some people idk why
@@ -26,10 +26,11 @@ class BoxWithLoading extends SoopyBoxElement {
             let rotation = (Date.now() - startTime) / 2
 
             let size = Math.min(this.location.getWidthExact(), this.location.getHeightExact())
-
+            Renderer.pushMatrix()
             Renderer.translate(this.location.getXExact() + this.location.getWidthExact() / 2, this.location.getYExact() + this.location.getHeightExact() / 2)
             Renderer.rotate(rotation)
             loadingImage.draw(-size / 2, -size / 2, size, size)
+            Renderer.popMatrix()
         })
 
         this.events.push(renderEvent)

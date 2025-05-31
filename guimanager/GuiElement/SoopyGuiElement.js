@@ -3,7 +3,7 @@
 
 if (!GlStateManager) {
     var GL11 = Java.type("org.lwjgl.opengl.GL11"); //using var so it goes to global scope
-    var GlStateManager = Java.type("net.minecraft.client.renderer.GlStateManager");
+    var GlStateManager = Java.type("com.mojang.blaze3d.platform.GlStateManager");
 }
 if (!MCTessellator) {
     var MCTessellator = Java.type("net.minecraft.client.render.Tessellator").getInstance()
@@ -12,13 +12,13 @@ if (!WorldRenderer) {
     var WorldRenderer = MCTessellator.getBuffer()
 }
 if (!DefaultVertexFormats) {
-    var DefaultVertexFormats = Java.type("net.minecraft.client.renderer.vertex.DefaultVertexFormats")
+    var DefaultVertexFormats = Java.type("net.minecraft.client.render.VertexFormats")
 }
 if (!OpenGlHelper) {
     var OpenGlHelper = Java.type("net.minecraft.client.renderer.OpenGlHelper")
 }
 
-let Framebuffer = Java.type("net.minecraft.client.shader.Framebuffer")
+let Framebuffer = Java.type("net.minecraft.client.gl.Framebuffer")
 import Enum from "../Enum"
 import SoopyEventListener from "../EventListener/SoopyEventListener"
 import SoopyPosition from "../Classes/SoopyPosition"
@@ -190,8 +190,10 @@ class SoopyGuiElement {
                         this._tempScrollbarWidth.set(4, 200)
                     }
                 }
+                Renderer.pushMatrix()
                 Renderer.translate(0, 0, 10)
-                Renderer.drawRect(this.isDarkThemeEnabled() ? Renderer.color(200, 200, 200) : Renderer.color(0, 0, 0), this.location.getXExact() + this.location.getWidthExact() - this._tempScrollbarWidth.get(), this.location.getYExact() + scrollBarY, this._tempScrollbarWidth.get(), scrollBarHeight)
+                Renderer.drawRect(this.isDarkThemeEnabled() ? Renderer.getColor(200, 200, 200) : Renderer.getColor(0, 0, 0), this.location.getXExact() + this.location.getWidthExact() - this._tempScrollbarWidth.get(), this.location.getYExact() + scrollBarY, this._tempScrollbarWidth.get(), scrollBarHeight)
+                Renderer.popMatrix()
             } else {
                 this._tempScrollbarWidth.set(0, 200)
             }
@@ -524,7 +526,7 @@ function drawFrameBuffer(framebuffer, x, y, w, h) {
     GlStateManager.func_179120_a(GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_ALPHA); //tryBlendFuncSeparate
     GlStateManager.func_179131_c(1, 1, 1, 1); //color
     framebuffer.func_147612_c(); //bindFramebufferTexture
-    // Renderer.drawRect(Renderer.color(255,0,0,100), x, y, w, h)
+    // Renderer.drawRect(Renderer.getColor(255,0,0,100), x, y, w, h)
     drawTexturedRect(x, y, w, h, 0, 1, 1, 0, GL11.GL_NEAREST);
     GlStateManager.func_179120_a(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0); //tryBlendFuncSeparate
 }

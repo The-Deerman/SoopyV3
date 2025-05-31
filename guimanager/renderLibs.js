@@ -3,10 +3,10 @@
 
 if (!GlStateManager) {
     var GL11 = Java.type("org.lwjgl.opengl.GL11"); //using var so it goes to global scope
-    var GlStateManager = Java.type("net.minecraft.client.renderer.GlStateManager");
+    var GlStateManager = Java.type("com.mojang.blaze3d.platform.GlStateManager");
 }
 
-const DefaultVertexFormats = Java.type("net.minecraft.client.renderer.vertex.DefaultVertexFormats")
+const DefaultVertexFormats = Java.type("net.minecraft.client.render.VertexFormats")
 
 let imageRegex = /!\[.*?\]\((.*?)\)/g
 let urlRegex = /\[(.*?)\]\(.*?\)/g
@@ -99,8 +99,10 @@ class RenderLibs {
      * @param {Number} scale The scale of the string (1 = default, 2=double, ect) 
      */
     drawString = function (text, x, y, scale) {
+        Renderer.pushMatrix()
         Renderer.scale(scale, scale)
         Renderer.drawString(text || "undefined", x / scale, y / scale)
+        Renderer.popMatrix()
     }
 
     /**
@@ -111,8 +113,10 @@ class RenderLibs {
      * @param {Number} scale The scale of the string (1 = default, 2=double, ect) 
      */
     drawStringShadow = function (text, x, y, scale) {
+        Renderer.pushMatrix()
         Renderer.scale(scale, scale)
         Renderer.drawStringWithShadow(text || "undefined", x / scale, y / scale)
+        Renderer.popMatrix()
     }
     /**
      * Draws a string at a location with a scale (rendering from top middle)
@@ -283,6 +287,7 @@ class RenderLibs {
         let colorG = color[1]
         let colorB = color[2]
 
+        /* NEW OLD RENDER CODE
         GlStateManager.func_179147_l()//GlStateManager.enableBlend()
         GlStateManager.func_179090_x()//GlStateManager.disableTexture2D()
         GlStateManager.func_179120_a(770, 771, 1, 0)//GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0)
@@ -290,7 +295,7 @@ class RenderLibs {
         //START DRAWING CENTERAL RECTANGLE
         GlStateManager.func_179124_c(colorR / 255, colorG / 255, colorB / 255) //GlStateManager.color(r, g, b)
 
-        WorldRenderer.func_181668_a(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.field_181705_e/*POSITION*/) //WorldRenderer.begin()
+        WorldRenderer.func_181668_a(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.field_181705_e/*POSITION* /) //WorldRenderer.begin()
 
         WorldRenderer.func_181662_b(x + borderWidth, y + h - borderWidth, 0).func_181675_d()//WorldRenderer.pos(x, y, z).endVertex()
         WorldRenderer.func_181662_b(x + w - borderWidth, y + h - borderWidth, 0).func_181675_d()//WorldRenderer.pos(x, y, z).endVertex()
@@ -303,7 +308,7 @@ class RenderLibs {
         //START DRAWING TOP+LEFT RECTANGLE
         GlStateManager.func_179124_c((colorR - 20) / 255, (colorG - 20) / 255, (colorB - 20) / 255) //GlStateManager.color(r, g, b)
 
-        WorldRenderer.func_181668_a(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.field_181705_e/*POSITION*/) //WorldRenderer.begin()
+        WorldRenderer.func_181668_a(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.field_181705_e/*POSITION* /) //WorldRenderer.begin()
 
         WorldRenderer.func_181662_b(x + borderWidth, y + borderWidth, 0).func_181675_d()//WorldRenderer.pos(x, y, z).endVertex()
         WorldRenderer.func_181662_b(x + w - borderWidth, y + borderWidth, 0).func_181675_d()//WorldRenderer.pos(x, y, z).endVertex()
@@ -318,7 +323,7 @@ class RenderLibs {
         //START DRAWING BOTTOM+RIGHT RECTANGLE
         GlStateManager.func_179124_c((colorR - 60) / 255, (colorG - 60) / 255, (colorB - 60) / 255) //GlStateManager.color(r, g, b)
 
-        WorldRenderer.func_181668_a(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.field_181705_e/*POSITION*/) //WorldRenderer.begin()
+        WorldRenderer.func_181668_a(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.field_181705_e/*POSITION* /) //WorldRenderer.begin()
 
         WorldRenderer.func_181662_b(x + w, y + h, 0).func_181675_d()//WorldRenderer.pos(x, y, z).endVertex()
         WorldRenderer.func_181662_b(x + w, y, 0).func_181675_d()//WorldRenderer.pos(x, y, z).endVertex()
@@ -333,16 +338,14 @@ class RenderLibs {
         GlStateManager.func_179124_c(1, 1, 1) //GlStateManager.color(r, g, b)
         GlStateManager.func_179098_w()//GlStateManager.enableTexture2D()
         GlStateManager.func_179084_k()//GlStateManager.disableBlend()
-
-        /* OLD RENDER CODE
-        Renderer.drawRect(Renderer.color(colorR, colorG, colorB),x+borderWidth,y+borderWidth,w-borderWidth*2,h-borderWidth*2)
-
-        Renderer.drawRect(Renderer.color(colorR-20*(color[3]?-1:1), colorG-20*(color[3]?-1:1), colorB-20*(color[3]?-1:1)),x,y,borderWidth,h)
-        Renderer.drawRect(Renderer.color(colorR-20*(color[3]?-1:1), colorG-20*(color[3]?-1:1), colorB-20*(color[3]?-1:1)),x,y,w,borderWidth)
-
-        Renderer.drawRect(Renderer.color(colorR-60*(color[3]?-1:1), colorG-60*(color[3]?-1:1), colorB-60*(color[3]?-1:1)),x+w-borderWidth,y,borderWidth,h)
-        Renderer.drawRect(Renderer.color(colorR-60*(color[3]?-1:1), colorG-60*(color[3]?-1:1), colorB-60*(color[3]?-1:1)),x,y+h-borderWidth,w,borderWidth)
         */
+
+        Renderer.drawRect(Renderer.getColor(colorR, colorG, colorB),x+borderWidth,y+borderWidth,w-borderWidth*2,h-borderWidth*2)
+        
+        Renderer.drawRect(Renderer.getColor(colorR-20*(color[3]?-1:1), colorG-20*(color[3]?-1:1), colorB-20*(color[3]?-1:1)),x,y,borderWidth,h)
+        Renderer.drawRect(Renderer.getColor(colorR-20*(color[3]?-1:1), colorG-20*(color[3]?-1:1), colorB-20*(color[3]?-1:1)),x,y,w,borderWidth)
+        Renderer.drawRect(Renderer.getColor(colorR-60*(color[3]?-1:1), colorG-60*(color[3]?-1:1), colorB-60*(color[3]?-1:1)),x+w-borderWidth,y,borderWidth,h)
+        Renderer.drawRect(Renderer.getColor(colorR-60*(color[3]?-1:1), colorG-60*(color[3]?-1:1), colorB-60*(color[3]?-1:1)),x,y+h-borderWidth,w,borderWidth)
     }
     /** 
      * Draws a Block of text with markup at a location
@@ -385,7 +388,7 @@ class RenderLibs {
             if (line.startsWith("```")) {
                 isCodeBlock = !isCodeBlock
                 if (!isCodeBlock) {
-                    if (actuallyRender) Renderer.drawRect(Renderer.color(0, 0, 0, 50), x, y + yOff, width, 2)
+                    if (actuallyRender) Renderer.drawRect(Renderer.getColor(0, 0, 0, 50), x, y + yOff, width, 2)
                     yOff += 2
                 } else {
                     codeblockType = line.substr(3)
@@ -396,7 +399,7 @@ class RenderLibs {
                 if (isCodeBlock) {
                     let lastColor = 8
                     this.splitStringAtWidth(this.addCodeBlockColoring(line.replace(/&/g, "&⭍"), codeblockType), width - 4).forEach((line2) => {
-                        if (actuallyRender) Renderer.drawRect(Renderer.color(0, 0, 0, 50), x, y + yOff, width, 10)
+                        if (actuallyRender) Renderer.drawRect(Renderer.getColor(0, 0, 0, 50), x, y + yOff, width, 10)
                         if (actuallyRender) this.drawString("&" + lastColor + line2, x + 2, y + yOff + 2, 1)
                         yOff += 10
 
