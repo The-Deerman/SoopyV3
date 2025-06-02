@@ -27,6 +27,11 @@ class SoopyGui extends Feature {
         this.lastClickedOpen = undefined;
 
         this.activeCategory = undefined;
+
+        this.default_x = undefined
+        this.default_y = undefined
+        this.default_w = undefined
+        this.default_h = undefined
     }
 
     onEnable() {
@@ -40,13 +45,14 @@ class SoopyGui extends Feature {
         this.registerCommand("spoopy", this.openCommand);
         this.registerCommand("spoopyv2", this.openCommand);
 
-        this.mainWindowElement = new SoopyBoxElement().setLocation(0.25, 0.1, 0.5, 0.8);
+        this.default_x = 0.2
+        this.default_y = 0.1
+        this.default_w = 0.6
+        this.default_h = 0.8
+        // this.mainWindowElement = new SoopyBoxElement().setLocation(0.25, 0.1, 0.5, 0.8);
+        this.mainWindowElement = new SoopyBoxElement().setLocation(this.default_x, this.default_y, this.default_w, this.default_h);
 
         this.mainWindowElement.addEvent(new SoopyOpenGuiEvent().setHandler(() => { this.goToPageNum(0, false) }));
-
-
-
-
 
         this.categoryPage = new SoopyGuiElement().setLocation(0, 0, 1, 1);
 
@@ -63,10 +69,6 @@ class SoopyGui extends Feature {
 
         this.buttonListElm = new SoopyGuiElement().setLocation(0.1, 0.2, 0.8, 0.8).setScrollable(true);
         this.categoryPage.addChild(this.buttonListElm);
-
-
-
-
 
         this.backButton = new TextWithArrow().setText("\xA70Back").setLocation(0.01, -0.2, 0.1, 0.1).setDirectionRight(false);
         let backButtonEvent = new SoopyMouseClickEvent().setHandler(() => { this.clickedBackButton() });
@@ -147,6 +149,11 @@ class SoopyGui extends Feature {
         this.activePages = [];
         this.currCategory = undefined;
         this.lastClickedOpen = undefined;
+
+        this.default_x = undefined
+        this.default_y = undefined
+        this.default_w = undefined
+        this.default_h = undefined
     }
 
     clickedBackButton() {
@@ -203,7 +210,7 @@ class SoopyGui extends Feature {
 
     closeSidebarPage() {
         this.sidebarPage.location.location.x.set(0.3, 500);
-        this.mainWindowElement.location.location.x.set(0.25, 500);
+        this.mainWindowElement.location.location.x.set(this.default_x, 500);
 
         this.sidebarPage.clearChildren();
 
