@@ -44,10 +44,13 @@ class SoopyGui extends Feature {
         this.registerCommand("snoopy", this.openCommand);
         this.registerCommand("spoopy", this.openCommand);
         this.registerCommand("spoopyv2", this.openCommand);
+        this.registerCommand("soopyv3", this.openCommand);
+        this.registerCommand("snoopyv3", this.openCommand);
+        this.registerCommand("spoopyv3", this.openCommand);
 
         this.default_x = 0.2
         this.default_y = 0.1
-        this.default_w = 0.6
+        this.default_w = 0.5
         this.default_h = 0.8
         // this.mainWindowElement = new SoopyBoxElement().setLocation(0.25, 0.1, 0.5, 0.8);
         this.mainWindowElement = new SoopyBoxElement().setLocation(this.default_x, this.default_y, this.default_w, this.default_h);
