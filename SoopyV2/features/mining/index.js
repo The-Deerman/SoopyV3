@@ -81,7 +81,7 @@ class Mining extends Feature {
         this.compactProgress = 0;
         this.compactItems = 0;
 
-        this.armourstandClass = Java.type("net.minecraft.entity.item.EntityArmorStand").class;
+        this.armourstandClass = Java.type("net.minecraft.entity.decoration.ArmorStandEntity");
 
         this.registerEvent("tick", this.tick);
         this.registerEvent("itemTooltip", this.itemTooltipEvent).registeredWhen(() => this.showContainedGemstoneSlots.getValue() || this.showUnlockedGemstoneSlots.getValue());

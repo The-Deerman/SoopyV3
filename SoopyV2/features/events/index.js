@@ -275,7 +275,7 @@ class Events extends Feature {
 
     step_1fps() {
         if (!this.MythMobsHPGuiElement.getValue()) return;
-        World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((mob) => {
+        World.getAllEntitiesOfType(net.minecraft.entity.decoration.ArmorStandEntity).forEach((mob) => {
             let name = mob.getName();
             if (!this.Mobs?.map((a) => a.getUUID().toString()).includes(mob.getUUID().toString())) {
                 if ((name.includes("Exalted") || name.includes("Stalwart")) && !name.split(" ")[2].startsWith("0")) {

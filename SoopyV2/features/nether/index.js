@@ -4,10 +4,10 @@ import ToggleSetting from "../settings/settingThings/toggle";
 import HudTextElement from "../hud/HudTextElement";
 import LocationSetting from "../settings/settingThings/location";
 const MCBlock = Java.type("net.minecraft.block.Block");
-const ArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
+const ArmorStand = Java.type("net.minecraft.entity.decoration.ArmorStandEntity");
 const MCItem = Java.type("net.minecraft.item.Item");
-const EntitySkeleton = Java.type("net.minecraft.entity.monster.EntitySkeleton");
-const EntityGhast = Java.type("net.minecraft.entity.monster.EntitySkeleton");
+const EntitySkeleton = Java.type("net.minecraft.entity.mob.SkeletonEntity");
+const EntityGhast = Java.type("net.minecraft.entity.mob.GhastEntity");
 
 let locationData = {
     barbarian: {

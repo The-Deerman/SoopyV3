@@ -156,7 +156,7 @@ class GlobalSettings extends Feature {
 
         this.registerEvent("itemTooltip", this.itemTooltipEvent).registeredWhen(() => this.itemWorth.getValue() || this.showChampion.getValue() || this.showHecatomb.getValue());
 
-        const EntityFallingBlock = Java.type("net.minecraft.entity.item.EntityFallingBlock");
+        const EntityFallingBlock = Java.type("net.minecraft.entity.FallingBlockEntity");
 
         this.registerEvent("renderEntity", (entity, posVec, partialTicks, event) => {
             if (entity.getEntity && entity.getEntity() instanceof EntityFallingBlock) {
@@ -535,7 +535,7 @@ class GlobalSettings extends Feature {
 
     mobThings() {
         if (!this.fancyVanquisherAlert.getValue()) return;
-        World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((entity) => {
+        World.getAllEntitiesOfType(net.minecraft.entity.decoration.ArmorStandEntity).forEach((entity) => {
             let name = entity.getName();
             if (name.includes("'s")) return;
             let Name = name.removeFormatting();

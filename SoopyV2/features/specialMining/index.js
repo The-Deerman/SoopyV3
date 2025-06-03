@@ -56,6 +56,9 @@ class PowderAndScatha extends Feature {
         this.showAreaTreasure = new ToggleSetting("Show Area Treasure", "whether or not to show each sub zone's treasures from chests", false, "show_area_treasure", this).requires(this.PowderElement)
         this.useGlobalSludgeJuiceDrop = new ToggleSetting("Globalized Sludge Juice Counter", "include sludge juice from all sources into the counter", false, "global_sludge_juice_drop", this).requires(this.PowderElement)
 
+        this.ArmorStandEntity = Java.type("net.minecraft.entity.decoration.ArmorStandEntity");
+        this.WitherEntity = Java.type("net.minecraft.entity.boss.WitherEntity"); 
+
         this.tempLoot = { global: {}, Jungle: {}, Goblin_Holdout: {}, Precursor_Remnants: {}, Mithril_Deposits: {} }
         this.tempLocation = undefined
         //this will add the treasure and switch display location to it (it's from the most recent location)
@@ -464,7 +467,7 @@ class PowderAndScatha extends Feature {
 
     step2fps() {
         if (!this.foundWither) {
-            World.getAllEntitiesOfType(net.minecraft.entity.boss.EntityWither)?.forEach(e => {
+            World.getAllEntitiesOfType(this.WitherEntity)?.forEach(e => {
                 if (e.getName().startsWith("§e§lPASSIVE EVENT §b§l2X POWDER §e§lRUNNING FOR §a§l")) {
                     this.dPowder = Date.now();
                     let time = ChatLib.removeFormatting(e.getName()).split("RUNNING FOR ").pop()
@@ -661,7 +664,7 @@ class PowderAndScatha extends Feature {
             return
         }
         if (!this.wormSpawned) return
-        World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach(entity => {
+        World.getAllEntitiesOfType(this.ArmorStandEntity).forEach(entity => {
             let name = entity.getName()
             //§8[§7Lv5§8] §cWorm§r §e5§c❤
             if (name.startsWith("§8[§7Lv5§8] §cWorm")) {
@@ -710,6 +713,8 @@ class PowderAndScatha extends Feature {
         this.dPowder = 0;
         this.wormSpawned = false;
         this.wormEntity = undefined;
+        this.ArmorStandEntity = undefined;
+        this.WitherEntity = undefined;
     }
 
     onDisable() {

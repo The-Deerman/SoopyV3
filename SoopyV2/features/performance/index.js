@@ -24,7 +24,7 @@ class Performance extends Feature {
 
         this.nextUpdateDontRender = 0;
         this.maxEntsRender = 50;
-        this.armourstandClass = Java.type("net.minecraft.entity.item.EntityArmorStand").class;
+        this.armourstandClass = Java.type("net.minecraft.entity.decoration.ArmorStandEntity");
         this.armourstandClassString = this.armourstandClass.toString();
 
         this.registerStep(true, 5, this.updateDontRender);
@@ -110,7 +110,7 @@ class Performance extends Feature {
 
     renderEntity(e, pos, ticks, event) {
         if (!this.armourStandCapSetting.getValue()) return;
-        if (!e.getEntity().class.toString() === this.armourstandClassString) return;
+        if (!e.toMC().getClass() === this.armourstandClassString) return;
         this.entitysRenderingTemp[e.getUUID().toString()] = true;
         if (this.dontRender[e.getUUID().toString()]) {
             cancel(event);

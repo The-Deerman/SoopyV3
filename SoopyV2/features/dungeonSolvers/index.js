@@ -13,10 +13,11 @@ import { Points, Waypoint } from "../../utils/renderJavaUtils";
 import { calculateDistanceQuick, getLore } from "../../utils/utils";
 import { drawLinePoints } from "../../utils/renderUtils";
 
-const entityGuardian = Java.type("net.minecraft.entity.monster.EntityGuardian");
+const EntityGuardian = Java.type("net.minecraft.entity.mob.GuardianEntity");
+const EntityArmorStand = Java.type("net.minecraft.entity.decoration.ArmorStandEntity");
 
 const MCBlock = Java.type("net.minecraft.block.Block");
-const EntityBlaze = Java.type("net.minecraft.entity.monster.EntityBlaze");
+const EntityBlaze = Java.type("net.minecraft.entity.mob.BlazeEntity");
 let translate;
 try {
     translate = net.minecraft.util.StringTranslate.func_74808_a();
@@ -945,7 +946,7 @@ class DungeonSolvers extends Feature {
         for (let i = 0; i < shifts; i++)this.timersData.shift();
 
         if (this.guardianHp.getValue() && this.FeatureManager.features["dataLoader"].class.dungeonFloor?.[1] === "3") {
-            let es = World.getAllEntitiesOfType(entityGuardian);
+            let es = World.getAllEntitiesOfType(EntityGuardian);
 
             for (let e of es) {
                 if (e.getEntity().func_110143_aJ() < 1000) continue;
@@ -1051,7 +1052,7 @@ class DungeonSolvers extends Feature {
         this.skulls = [];
         this.arrows = [];
         this.blazes = [];
-        World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((e) => {
+        World.getAllEntitiesOfType(EntityArmorStand).forEach((e) => {
             if (e.getEntity()["func_71124_b"](4) && e.getEntity()["func_71124_b"](4)["func_82833_r"]().endsWith(getSkullName())) {
                 this.addSkull(e);
             }
@@ -1215,7 +1216,7 @@ class DungeonSolvers extends Feature {
                 this.bloodX = skull.getX() + 8 - (skull.getX() + 8) % 32;
                 this.bloodY = skull.getZ() + 8 - (skull.getZ() + 8) % 32;
                 this.skulls = [];
-                World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((e) => {
+                World.getAllEntitiesOfType(EntityArmorStand).forEach((e) => {
                     if (e.getEntity()["func_71124_b"](4) && e.getEntity()["func_71124_b"](4)["func_82833_r"]().endsWith(getSkullName())) {
                         this.addSkull(e);
                     }
@@ -1382,7 +1383,7 @@ class DungeonSolvers extends Feature {
 
     step_1fps() {
         if (this.IceSprayWarn.getValue()) {
-            World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((iceSprayEntity) => {
+            World.getAllEntitiesOfType(EntityArmorStand).forEach((iceSprayEntity) => {
                 let iceSprayEntityNameRF = ChatLib.removeFormatting(iceSprayEntity.getName());
                 if (iceSprayEntityNameRF.includes("Ice Spray Wand") && !this.iceSprayEntityPH) {
                     Client.showTitle(`&r&6&l[&b&l&kO&6&l] ${iceSprayEntityNameRF.toUpperCase()} &6&l[&b&l&kO&6&l]`, "", 0, 40, 10);

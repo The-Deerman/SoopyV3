@@ -76,6 +76,9 @@ class Slayers extends Feature {
     onEnable() {
         this.initVariables();
 
+        this.ArmorStandEntity = Java.type("net.minecraft.entity.decoration.ArmorStandEntity");
+        this.EndermanEntity = Java.type("net.minecraft.entity.mob.EndermanEntity");
+
         this.expOnKill = new ToggleSetting("Show slayer exp on boss kill", "Says your slayer exp in chat when you kill a boss, also says time taken to spawn+kill", true, "slayer_xp", this);
         this.slainAlert = new ToggleSetting("Show boss slain alert", "This helps you to not kill mobs for ages with an inactive quest", true, "boss_slain_alert", this);
         this.spawnAlert = new ToggleSetting("Show boss spawned alert", "This helps you to not miss your boss when you spawn it", true, "boss_spawn_alert", this);
@@ -482,8 +485,8 @@ class Slayers extends Feature {
     entityAttackEvent(event) {
 
         if (event.source.func_76346_g() === Player.getPlayer()) {
-            if (event.entity instanceof net.minecraft.entity.monster.EntityEnderman) {
-                World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((e) => {
+            if (event.entity instanceof this.EndermanEntity) {
+                World.getAllEntitiesOfType(this.ArmorStandEntity).forEach((e) => {
                     if (e.getName().includes("Voidgloom Seraph")) {
 
                         if ((e.getX() - event.entity["field_70165_t"]) ** 2 + (e.getY() - event.entity["field_70163_u"]) ** 2 + (e.getZ() - event.entity["field_70161_v"]) ** 2 < 25) {
@@ -498,7 +501,7 @@ class Slayers extends Feature {
 
     assignActualEmanBoss(entity) {
         if (this.bossSpawnedMessage) {
-            World.getAllEntitiesOfType(net.minecraft.entity.monster.EntityEnderman).forEach((e) => {
+            World.getAllEntitiesOfType(this.EndermanEntity).forEach((e) => {
                 if (e.getName().includes("Voidgloom Seraph")) {
 
                     if ((e.getX() - entity.getX()) ** 2 + (e.getY() - entity.getY()) ** 2 + (e.getZ() - entity.getZ()) ** 2 < 25) {
@@ -568,7 +571,7 @@ class Slayers extends Feature {
 
     step_4fps() {
         if (this.BoxAroundMiniboss.getValue() || this.BoxAroundAreaMiniboss.getValue() || this.betterHideDeadEntity.getValue() || this.summonsHideNametag.getValue() || this.summonHPGuiElement.getValue() || this.summonsLowWarning.getValue() || this.isCorrectBind && this.bossBindDefault.getValue() != "CHAR_NONE" || this.arachneKeeperMain.getValue()) {
-            World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((name) => {
+            World.getAllEntitiesOfType(this.ArmorStandEntity).forEach((name) => {
                 let Name = name.getName();
                 let nameRemoveFormat = Name.removeFormatting();
                 if (this.arachneKeeperMain.getValue() && Name.startsWith("\xA78[\xA77Lv100\xA78] \xA74\xA7lArachne's Keeper\xA7r")) {
@@ -651,7 +654,7 @@ class Slayers extends Feature {
                     if (e["func_71124_b"](4)["func_82833_r"]() === "Beacon") {
                         let closestEIsGaming = false;
                         let closestDist = Infinity;
-                        World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((e2) => {
+                        World.getAllEntitiesOfType(this.ArmorStandEntity).forEach((e2) => {
                             if (e2.getName().includes("Voidgloom Seraph")) {
                                 if ((e2.getX() - e["field_70165_t"]) ** 2 + (e2.getY() - e["field_70163_u"]) ** 2 + (e2.getZ() - e["field_70161_v"]) ** 2 < closestDist) {
                                     closestDist = (e2.getX() - e["field_70165_t"]) ** 2 + (e2.getY() - e["field_70163_u"]) ** 2 + (e2.getZ() - e["field_70161_v"]) ** 2;
@@ -667,7 +670,7 @@ class Slayers extends Feature {
                         let closestEIsGaming = false;
                         let closestDist = Infinity;
 			let distance = Infinity;
-                        World.getAllEntitiesOfType(net.minecraft.entity.item.EntityArmorStand).forEach((e2) => {
+                        World.getAllEntitiesOfType(this.ArmorStandEntity).forEach((e2) => {
                             if (e2.getName().includes("Voidgloom Seraph")) {
 				distance = (e2.getX() - e["field_70165_t"]) ** 2 + (e2.getY() - e["field_70163_u"]) ** 2 + (e2.getZ() - e["field_70161_v"]) ** 2;
                                 if (distance < closestDist) {
@@ -1048,6 +1051,8 @@ class Slayers extends Feature {
     }
 
     initVariables() {
+        this.ArmorStandEntity = undefined;
+        this.EndermanEntity = undefined;
         this.expOnKill = undefined;
         this.slainAlert = undefined;
         this.spawnAlert = undefined;

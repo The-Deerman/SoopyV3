@@ -9,12 +9,13 @@ import LocationSetting from "../settings/settingThings/location";
 import SettingBase from "../settings/settingThings/settingBase";
 import ToggleSetting from "../settings/settingThings/toggle";
 
-const EntityArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
-const EntityPlayer = Java.type("net.minecraft.entity.player.EntityPlayer");
-const EntityCaveSpider = Java.type("net.minecraft.entity.monster.EntityCaveSpider");
-const EntitySkeleton = Java.type("net.minecraft.entity.monster.EntitySkeleton");
-const EntitySpider = Java.type("net.minecraft.entity.monster.EntitySpider");
-const EntityCreeper = Java.type("net.minecraft.entity.monster.EntityCreeper");
+const EntityArmorStand = Java.type("net.minecraft.entity.decoration.ArmorStandEntity");
+const EntityPlayer = Java.type("net.minecraft.entity.player.PlayerEntity");
+const EntityCaveSpider = Java.type("net.minecraft.entity.mob.CaveSpiderEntity");
+const EntitySkeleton = Java.type("net.minecraft.entity.mob.SkeletonEntity");
+const EntityWitherSkeleton = Java.type("net.minecraft.entity.mob.WitherSkeletonEntity");
+const EntitySpider = Java.type("net.minecraft.entity.mob.SpiderEntity"); // super class of CaveSpiderEntity
+const EntityCreeper = Java.type("net.minecraft.entity.mob.CreeperEntity");
 
 class Bestiary extends Feature {
     constructor() {
@@ -128,7 +129,7 @@ class Bestiary extends Feature {
                 entityClass = EntityCreeper;
                 color = [0, 255, 0];
             } else if (name.includes("Wither Skeleton")) {
-                entityClass = EntitySkeleton;
+                entityClass = EntityWitherSkeleton;
                 color = [255, 255, 255];
             } else {
                 continue;
