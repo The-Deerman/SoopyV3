@@ -48,7 +48,7 @@ class SoopyGui extends Feature {
         this.registerCommand("snoopyv3", this.openCommand);
         this.registerCommand("spoopyv3", this.openCommand);
 
-        this.default_x = 0.2
+        this.default_x = 0.25
         this.default_y = 0.1
         this.default_w = 0.5
         this.default_h = 0.8
