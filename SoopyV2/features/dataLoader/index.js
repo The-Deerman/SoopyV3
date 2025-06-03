@@ -199,7 +199,7 @@ class DataLoader extends Feature {
                 this.firstLoaded = true;
             }
         }
-        this.isInSkyblock = Scoreboard.getTitle()?.removeFormatting().replace(/I/g, "Y").includes("SKYBLOCK");
+        this.isInSkyblock = Scoreboard.getTitle()?.getUnformattedText().replace(/I/g, "Y").includes("SKYBLOCK");
 
         if (!this.isInSkyblock) {
             this.stats = {};
