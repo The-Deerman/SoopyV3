@@ -1,19 +1,19 @@
 import { numberWithCommas } from "./numberUtils";
 
-let SoopyV2Forge = Java.type("me.soopyboo32.soopyv2forge.SoopyV2Forge").INSTANCE;
+let SoopyV2Forge = Java.type("me.the_deerman.soopyv3fabric.SoopyV3Fabric").INSTANCE;
 
-let LASTEST_SOOPYFORGE_VER = "1.1";
-let canUseForgeRendering = net.minecraftforge.fml.common.Loader.isModLoaded("soopyv2forge");
+let LASTEST_SOOPYFORGE_VER = "1.0.0";
+let canUseForgeRendering = net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("soopyv3fabric");
 
 let ArrayList = Java.type("java.util.ArrayList");
-let Vec3 = Java.type("net.minecraft.util.Vec3");
-let Vector2f = Java.type("javax.vecmath.Vector2f");
+let Vec3 = Java.type("net.minecraft.util.math.Vec3d");
+let Vector2f = Java.type("net.minecraft.util.math.Vec2f");
 
-let RenderPointsC = Java.type("me.soopyboo32.soopyv2forge.RenderTypes.Points");
-let RenderWorldTextC = Java.type("me.soopyboo32.soopyv2forge.RenderTypes.WorldText");
-let RenderBeaconC = Java.type("me.soopyboo32.soopyv2forge.RenderTypes.Beacon");
-let HudPointsC = Java.type("me.soopyboo32.soopyv2forge.RenderTypes.HudPoints");
-let HudTextC = Java.type("me.soopyboo32.soopyv2forge.RenderTypes.HudText");
+let RenderPointsC = Java.type("me.the_deerman.soopyv3fabric.render_types.Points");
+let RenderWorldTextC = Java.type("me.the_deerman.soopyv3fabric.render_types.WorldText");
+let RenderBeaconC = Java.type("me.the_deerman.soopyv3fabric.render_types.Beacon");
+let HudPointsC = Java.type("me.the_deerman.soopyv3fabric.render_types.HudPoints");
+let HudTextC = Java.type("me.the_deerman.soopyv3fabric.render_types.HudText");
 
 let addFix = false;
 if (!global.soopyv2RenderWorldThings) {
@@ -396,7 +396,7 @@ export class Waypoint extends FilledBox {
 
 
 register("worldLoad", () => {
-    if (!net.minecraftforge.fml.common.Loader.isModLoaded("soopyv2forge")) {
+    if (!net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("soopyv3fabric")) {
         ChatLib.chat("&1" + ChatLib.getChatBreak("-").trim());
         ChatLib.chat("\xA7cWARNING: You dont have the forge mod for soopyv2 installed");
         ChatLib.chat("\xA7cWARNING: -> almost nothing can be rendered");
@@ -407,7 +407,7 @@ register("worldLoad", () => {
     if (SoopyV2Forge.getVersion() !== LASTEST_SOOPYFORGE_VER) {
         ChatLib.chat("&1" + ChatLib.getChatBreak("-").trim());
         ChatLib.chat("\xA7cWARNING: Your forge version of soopyv2 is outdated");
-        if (LASTEST_SOOPYFORGE_VER === "1.1") {
+        if (LASTEST_SOOPYFORGE_VER === "1.0.0") {
             ChatLib.chat("\xA7cWARNING: this does not affect much at the moment, but has an incorect download url");
         } else {
             ChatLib.chat("\xA7cWARNING: -> almost nothing can be rendered");
