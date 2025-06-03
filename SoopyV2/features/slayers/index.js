@@ -186,7 +186,7 @@ class Slayers extends Feature {
         this.disableEmanTp = new ToggleSetting("Disable enderman Teleportation", "Exact same as feature in SBA", false, "emantp_disable", this);
 
         this.bossBindBase = new SettingBase("Underneath is hotkey for choosing Eman Boss", "see minecraft controls menu", true, "boss_info_hotkey", this);
-        this.bossBindDefault = new TextSetting("Default keybind", "Eg KEY_F", "CHAR_NONE", "boss_keybind_default", this, "", false);
+        this.bossBindDefault = new TextSetting("Default keybind", "Eg KEY_NONE or KEY_F", "KEY_NONE", "boss_keybind_default", this, "", false);
         this.disableWhenNotYourBoss = new ToggleSetting("Disable KeyBind", "when the boss is not yours", false, "boss_bind_disable", this);
         this.isCorrectBind = true;
         this.candidateBoss = [];
@@ -570,7 +570,7 @@ class Slayers extends Feature {
     }
 
     step_4fps() {
-        if (this.BoxAroundMiniboss.getValue() || this.BoxAroundAreaMiniboss.getValue() || this.betterHideDeadEntity.getValue() || this.summonsHideNametag.getValue() || this.summonHPGuiElement.getValue() || this.summonsLowWarning.getValue() || this.isCorrectBind && this.bossBindDefault.getValue() != "CHAR_NONE" || this.arachneKeeperMain.getValue()) {
+        if (this.BoxAroundMiniboss.getValue() || this.BoxAroundAreaMiniboss.getValue() || this.betterHideDeadEntity.getValue() || this.summonsHideNametag.getValue() || this.summonHPGuiElement.getValue() || this.summonsLowWarning.getValue() || this.isCorrectBind && this.bossBindDefault.getValue() != "KEY_NONE" || this.arachneKeeperMain.getValue()) {
             World.getAllEntitiesOfType(this.ArmorStandEntity).forEach((name) => {
                 let Name = name.getName();
                 let nameRemoveFormat = Name.removeFormatting();

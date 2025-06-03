@@ -85,13 +85,13 @@ class Events extends Feature {
         this.ignorePlayers = new Set;
 
         new SettingBase("There is also a hotkey to warp near", "see minecraft controls menu", true, "warp_info_hotkey", this);
-        this.warpBindDefault = new TextSetting("Default warp keybind", "Eg KEY_F", "CHAR_NONE", "inquis_keybind_default", this, "", false);
+        this.warpBindDefault = new TextSetting("Default warp keybind", "Eg KEY_NONE or KEY_F", "KEY_NONE", "inquis_keybind_default", this, "", false);
 
         try {
             this.warpBind = getKeyBindFromKey(Keyboard[this.warpBindDefault.getValue()], "Warp to nearest location to burrial guess");
         } catch (e) {
-            ChatLib.chat(this.FeatureManager.messagePrefix + this.warpBindDefault.getValue() + " is an invalid keyboard key, see https://legacy.lwjgl.org/javadoc/org/lwjgl/input/Keyboard.html");
-            this.warpBind = getKeyBindFromKey(Keyboard.CHAR_NONE, "Warp to nearest location to burrial guess");
+            ChatLib.chat(this.FeatureManager.messagePrefix + this.warpBindDefault.getValue() + " is an invalid keyboard key, see _outdated_ https://legacy.lwjgl.org/javadoc/org/lwjgl/input/Keyboard.html");
+            this.warpBind = getKeyBindFromKey(Keyboard.KEY_NONE, "Warp to nearest location to burrial guess");
         }
 
         this.slayerLocationDataH = {};
