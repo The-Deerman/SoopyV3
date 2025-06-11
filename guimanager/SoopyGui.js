@@ -366,7 +366,7 @@ class SoopyGui {
     _onKeyPress(key, keyId) {
         this.element.triggerEvent(Enums.EVENT.KEY_PRESS, [key, keyId])
 
-        if (keyId === 57 && this.ctGui.isControlDown()) {
+        if (keyId === 57 && Client.isControlDown()) {
             //Open command console
 
             openCommandConsole(this)

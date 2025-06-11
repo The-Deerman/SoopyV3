@@ -85,10 +85,11 @@ class EditableText extends SoopyGuiElement {
         let prevText = this.text
         let prevCursorLocation = this.cursorTextLocationId
 
+        // https://www.glfw.org/docs/latest/group__keys.html
         switch (keyId) {
-            case 14: //backspace
+            case 259: // backspace
                 if (this.cursorTextLocationId > 0) {
-                    if (this.main.ctGui.isControlDown()) {
+                    if (Client.isControlDown()) {
                         let preText = this.text.substring(0, this.cursorTextLocationId)
                         let postText = this.text.substring(this.cursorTextLocationId)
 
@@ -107,20 +108,20 @@ class EditableText extends SoopyGuiElement {
                     }
                 }
                 break
-            case 199: //home key
+            case 199: // TODO home key
                 this.cursorTextLocationId = 0
                 break
-            case 207: //end key
+            case 207: // TODO end key
                 this.cursorTextLocationId = this.text.length
                 break
-            case 211: //delete
+            case 261: // delete
                 if (this.cursorTextLocationId < this.text.length) {
                     this.text = this.text.substring(0, this.cursorTextLocationId) + this.text.substring(this.cursorTextLocationId + 1)
                 }
                 break;
-            case 203: //left
+            case 263: // left
                 if (this.cursorTextLocationId > 0) {
-                    if (this.main.ctGui.isControlDown()) {
+                    if (Client.isControlDown()) {
                         do {
                             this.cursorTextLocationId--
                         } while (this.cursorTextLocationId > 0 && this.text[this.cursorTextLocationId] !== " ")
@@ -129,9 +130,9 @@ class EditableText extends SoopyGuiElement {
                     }
                 }
                 break
-            case 205: //right
+            case 262: // right
                 if (this.cursorTextLocationId < this.text.length) {
-                    if (this.main.ctGui.isControlDown()) {
+                    if (Client.isControlDown()) {
                         do {
                             this.cursorTextLocationId++
                         } while (this.cursorTextLocationId < this.text.length && this.text[this.cursorTextLocationId] !== " ")
@@ -139,31 +140,37 @@ class EditableText extends SoopyGuiElement {
                         this.cursorTextLocationId++
                     }
                 }
-                break
-            case 42: //left shift
                 break;
-            case 54: //right shift
+            case 264: // down
                 break;
-            case 29: //left control
+            case 265: // up
                 break;
-            case 157: //right control
+            case 340: // left shift
                 break;
-            case 58: //caps lock
+            case 344: // right shift
                 break;
-            case 28: //enter
+            case 341: // left control
                 break;
-            case 15: //tab
+            case 345: // right control
                 break;
-            case 1: //escape i think
+            case 280: // caps lock
+                break;
+            case 257: // enter
+                break;
+            case 258: // tab
+                break;
+            case 256: // escape
                 this.selected = false
                 break;
             case 47: //v (HAS TO BE B4 TYPING)
-                if (keyId === 47 && this.main.ctGui.isControlDown()) {
+                if (keyId === 47 && Client.isControlDown()) {
                     this.text = this.text.substring(0, this.cursorTextLocationId) + Java.type("net.minecraft.client.gui.GuiScreen").func_146277_j() + this.text.substring(this.cursorTextLocationId)
 
                     this.cursorTextLocationId += Java.type("net.minecraft.client.gui.GuiScreen").func_146277_j().length
                     break;
                 }
+            case -1: // happens when changing window
+                break;
             default:
                 this.text = this.text.substring(0, this.cursorTextLocationId) + key + this.text.substring(this.cursorTextLocationId)
                 this.cursorTextLocationId++
