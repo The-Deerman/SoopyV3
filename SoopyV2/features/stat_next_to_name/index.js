@@ -74,7 +74,7 @@ class StatNextToName extends Feature {
         if (this.lastWorldLoad && Date.now() - this.lastWorldLoad > 1000) {
             World.getAllPlayers().forEach((player) => {
                 if (this.userStats[player.getUUID().toString().replace(/-/g, "")]) return;
-                if (Player.getUUID().replace(/-/g, "").toString().substr(12, 1) !== "4") return;
+                if (Player.getUUID().toString().replace(/-/g, "").substr(12, 1) !== "4") return;
                 this.loadPlayerStatsCache(player.getUUID().toString().replace(/-/g, ""), player.getName());
             });
             this.lastWorldLoad = undefined;
@@ -90,7 +90,7 @@ class StatNextToName extends Feature {
                 return;
             }
             if (this.loadingStats.includes(player.getUUID().toString().replace(/-/g, ""))) return;
-            if (Player.getUUID().replace(/-/g, "").toString().substr(12, 1) !== "4") return;
+            if (Player.getUUID().toString().replace(/-/g, "").substr(12, 1) !== "4") return;
 
             let dist = Math.pow(player.getX() - Player.getX(), 2) + Math.pow(player.getY() - Player.getY(), 2) + Math.pow(player.getZ() - Player.getZ(), 2);
             if (dist < nearestDistance) {
@@ -125,7 +125,7 @@ class StatNextToName extends Feature {
 
         if (player.getUUID().toString().replace(/-/g, "") === Player.getUUID().toString().replace(/-/g, "")) return;
         if (this.userStats[player.getUUID().toString().replace(/-/g, "")]) return;
-        if (Player.getUUID().replace(/-/g, "").toString().substr(12, 1) !== "4") return;
+        if (Player.getUUID().toString().replace(/-/g, "").substr(12, 1) !== "4") return;
 
         this.loadPlayerStatsCache(player.getUUID().toString().replace(/-/g, ""), player.getName());
     }

@@ -672,7 +672,7 @@ class Hud extends Feature {
     }
 
     scan_pets() {
-        if (this.scanGuiForPet.getValue() && Player?.getContainer()?.getName()?.includes("Pets")) {
+        if (this.scanGuiForPet.getValue() && Player?.getContainer()?.getName()?.toString()?.includes("Pets")) {
             let inv = Player.getContainer().getItems();
             for (let item of inv) {
                 let itemName = item?.getName();
@@ -691,7 +691,7 @@ class Hud extends Feature {
     }
 
     hovered_pet(tooltip, item, event) {
-        if (Player?.getContainer()?.getName()?.includes("Pets")) {
+        if (Player?.getContainer()?.getName()?.toString()?.includes("Pets")) {
             if (item?.getName()?.includes("[Lvl ")) this.spawnedPet = item.getName();
         }
     }
