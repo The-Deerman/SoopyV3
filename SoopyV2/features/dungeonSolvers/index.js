@@ -203,20 +203,20 @@ class DungeonSolvers extends Feature {
 
         this.stairStonkHelper = new ToggleSetting("Stair Stonk Helper", "shows a line where to drop thru", true, "stair_stonk_helper", this);
 
-        this.registerChat("&r&c \u2620 &r${player} were killed by Withermancer&r&7 and became a ghost&r&7.&r", (player, e) => {
+        this.registerChat("&r&c \u2620 &r${player} were killed by Withermancer&r&7 and became a ghost&r&7.", (player, e) => {
             if (this.forgorEnabled.getValue()) {
                 cancel(e);
                 ChatLib.chat(player + " forgor \u2620");
             }
         });
-        this.registerChat("&r&c \u2620 &r${player} was killed by Withermancer&r&7 and became a ghost&r&7.&r", (player, e) => {
+        this.registerChat("&r&c \u2620 &r${player} was killed by Withermancer&r&7 and became a ghost&r&7.", (player, e) => {
             if (this.forgorEnabled.getValue()) {
                 cancel(e);
                 ChatLib.chat(player + " forgor \u2620");
             }
         });
 
-        this.registerChat("&r&c \u2620 ${info} and became a ghost&r&7.&r", (info, e) => {
+        this.registerChat("&r&c \u2620 ${info} and became a ghost&r&7.", (info, e) => {
             let player = ChatLib.removeFormatting(info.split(" ")[0]);
 
             this.scanFirstDeathForSpiritPet(player);

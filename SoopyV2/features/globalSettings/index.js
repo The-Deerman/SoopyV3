@@ -125,12 +125,12 @@ class GlobalSettings extends Feature {
 
         this.registerStep(true, 5, this.step5Fps);
 
-        this.registerChat("&r&c \u2620 ${info} and became a ghost&r&7.&r", (info, e) => {
+        this.registerChat("&r&c \u2620 ${info} and became a ghost&r&7.", (info, e) => {
             if (info.includes("You")) this.preventGoingBrrr();
         });
         this.registerChat("${info}You were revived by ${info2}", this.preventGoingBrrr);
 
-        this.registerChat("&r&e> Your bottle of thunder has fully charged!&r", () => {
+        this.registerChat("&r&e> Your bottle of thunder has fully charged!", () => {
             if (this.thunderBottleFull.getValue()) {
                 Client.showTitle("&6Bottle of Thunder Fully Charged", "", 0, 100, 10);
             }

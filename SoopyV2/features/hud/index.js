@@ -340,22 +340,22 @@ class Hud extends Feature {
 
         this.petText = "&6Pet&7> &fLoading...";
         this.petElement.setText(this.petText);
-        this.registerChat("&cAutopet &eequipped your ${*}&e! &a&lVIEW RULE&r", (event) => {
             this.petText = "&6Pet&7> " + new Message(event).getMessageParts()[0].getHoverValue().match(/§r§aEquip: (.+)\n/)[1].replace(/\xA7r/g, "");
+        this.registerChat("&r&cAutopet &eequipped your ${*}&e! &a&lVIEW RULE", (event) => {
             this.petElement.setText(this.petText);
             this.lastSwappedPet = Date.now();
         });
-        this.registerChat("&r&aYou summoned your &r${pet}&r&a!&r", (pet) => {
+        this.registerChat("&r&aYou summoned your &r${pet}&r&a!", (pet) => {
             this.petText = "&6Pet&7> " + this.spawnedPet;
             this.petElement.setText(this.petText);
             this.lastSwappedPet = Date.now();
         });
-        this.registerChat("&r&aYou despawned your &r${*}&r&a!&r", () => {
+        this.registerChat("&r&aYou despawned your &r${*}&r&a!", () => {
             this.petText = "&6Pet&7> &cNone";
             this.petElement.setText(this.petText);
             this.lastSwappedPet = Date.now();
         });
-        this.registerChat("&r&aYour &r${pet} &r&aleveled up to level &r&9${level}&r&a!&r", (pet, level) => {
+        this.registerChat("&r&aYour &r${pet} &r&aleveled up to level &r&9${level}&r&a!", (pet, level) => {
             if (ChatLib.removeFormatting(this.petText.split("] ")[1].trim()) === ChatLib.removeFormatting(pet.trim())) {
                 const levelMatch = this.petElement.getText()[0].match(/Lvl (\d+)/);
                 const currentLevel = levelMatch ? parseInt(levelMatch[1]) : 0;

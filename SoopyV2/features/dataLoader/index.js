@@ -43,7 +43,7 @@ class DataLoader extends Feature {
         this.ping = 0;
         this.pingI = 0;
 
-        this.registerChat("&rUnknown command. Type \"/help\" for help. ('uhfdsolguhkjdjfhgkjhdfdlgkjhldkjhlkjhsldkjfhldshkjf')&r", (e) => {
+        this.registerChat("&rUnknown command. Type \"/help\" for help. ('uhfdsolguhkjdjfhgkjhdfdlgkjhldkjhlkjhsldkjfhldshkjf')", (e) => {
             if (this.checkingPing) {
                 this.lastPings[this.pingI % 3] = Date.now() - this.lastPingCheck;
                 cancel(e);
@@ -77,23 +77,23 @@ class DataLoader extends Feature {
 
         this.firstLoaded = false;
 
-        ["You are not currently in a party.", "You have been kicked from the party by ${*}", "You left the party.", "The party was disbanded because all invites expired and the party was empty", "${*} &r&ehas disbanded the party!&r"].forEach((m) => this.registerChat(m, () => {
+        ["You are not currently in a party.", "You have been kicked from the party by ${*}", "You left the party.", "The party was disbanded because all invites expired and the party was empty", "${*} &r&ehas disbanded the party!"].forEach((m) => this.registerChat(m, () => {
             this.partyMembers.clear();
             this.partyMembers.add(Player.getName());
         }));
 
-        ["${mem} &r&ejoined the party.&r", "${mem} &r&einvited &r${*} &r&eto the party! They have &r&c60 &r&eseconds to accept.&r", "&dDungeon Finder &r&f> &r${mem} &r&ejoined the dungeon group! (&r&b${*}&r&e)&r"].forEach((m) => this.registerChat(m, (mem) => {
+        ["${mem} &r&ejoined the party.", "${mem} &r&einvited &r${*} &r&eto the party! They have &r&c60 &r&eseconds to accept.", "&dDungeon Finder &r&f> &r${mem} &r&ejoined the dungeon group! (&r&b${*}&r&e)"].forEach((m) => this.registerChat(m, (mem) => {
             this.partyMembers.add(ChatLib.removeFormatting(mem.trim().split(" ").pop().trim()));
         }));
-        ["${mem} &r&ehas been removed from the party.&r", "${mem} &r&ehas left the party.&r", "${mem} &r&ewas removed from your party because they disconnected&r", "Kicked ${mem} because they were offline."].forEach((m) => this.registerChat(m, (mem) => {
+        ["${mem} &r&ehas been removed from the party.", "${mem} &r&ehas left the party.", "${mem} &r&ewas removed from your party because they disconnected", "Kicked ${mem} because they were offline."].forEach((m) => this.registerChat(m, (mem) => {
             this.partyMembers.delete(ChatLib.removeFormatting(mem.trim().split(" ").pop().trim()));
         }));
-        this.registerChat("&eYou have joined &r${mem}'s &r&eparty!&r", (mem) => {
+        this.registerChat("&eYou have joined &r${mem}'s &r&eparty!", (mem) => {
             this.partyMembers.clear();
             this.partyMembers.add(Player.getName());
             this.partyMembers.add(ChatLib.removeFormatting(p = mem.trim().split(" ").pop().trim()));
         });
-        this.registerChat("&eYou have joined &r${mem}' &r&eparty!&r", (mem) => {
+        this.registerChat("&eYou have joined &r${mem}' &r&eparty!", (mem) => {
             this.partyMembers.clear();
             this.partyMembers.add(Player.getName());
             this.partyMembers.add(ChatLib.removeFormatting(mem).trim());

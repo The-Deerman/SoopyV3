@@ -23,7 +23,7 @@ class FriendsGui extends Feature {
 
         this.GuiPage = new SettingPage;
 
-        this.registerChat("&9&m-----------------------------------------------------&r&9${*}&r&9             ${*} &6Friends (Page ${pagenum} of ${maxpages})${friendslist}&r&9&m-----------------------------------------------------&r", (...args) => { this.GuiPage.friendListMessageEvent.call(this.GuiPage, ...args) });
+        this.registerChat("&9&m-----------------------------------------------------&r&9${*}&r&9             ${*} &6Friends (Page ${pagenum} of ${maxpages})${friendslist}&r&9&m-----------------------------------------------------", (...args) => { this.GuiPage.friendListMessageEvent.call(this.GuiPage, ...args) });
         this.registerStep(true, 5, () => { this.GuiPage.regenGuiElements.call(this.GuiPage) });
 
         this.registerStep(false, 1, () => { this.GuiPage.runComm.call(this.GuiPage) });
