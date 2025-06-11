@@ -31,9 +31,9 @@ let utils = {
         let lore = returnName ? [item.getName()] : [];
         if (!item) return lore;
 
-        let loreNBT = item.getNBT()?.getCompoundTag("tag")?.getCompoundTag("display")?.getTagList("Lore", 8);
-        if (loreNBT) for (let i = 0; i < loreNBT["func_74745_c"](); i++) {
-            lore.push(loreNBT["func_150307_f"](i));
+        let loreNBT = item.getNBT()?.getCompoundTag("display")?.getTagList("Lore", 8);
+        if (loreNBT) for (let i = 0; i < loreNBT.getTagCount(); i++) {
+            lore.push(loreNBT.getStringTagAt(i));
         }
 
         return lore;
