@@ -442,7 +442,7 @@ class MuseumGui {
             for (let item of Player.getContainer().getItems()) {
                 if (!item) continue;
                 if (item.getID() === -1) continue;
-                let lore = item.itemStack["func_82840_a"](Player.getPlayer(), false);
+                let lore = item.itemStack["func_82840_a"](Player.toMC(), false);
                 for (let line of lore) {
                     if (ChatLib.removeFormatting(line) === "Click to donate item!") {
                         let sb_id = utils.getSBID(item);
@@ -828,7 +828,7 @@ class MuseumGui {
         }
         if (this.soopyGui.ctGui.isOpen()) {
             if (event.gui && event.gui.field_147002_h) {
-                Player.getPlayer().field_71070_bA = event.gui.field_147002_h;
+                Player.toMC().field_71070_bA = event.gui.field_147002_h;
                 if (Player.getContainer().getName() === "Museum Rewards") {
                     return;
                 }
@@ -847,7 +847,7 @@ class MuseumGui {
             this.itemsBox.dirtyFrameBuffer?.();
         } else {
             if (name === "Your Museum" && !this.isInMuseum) {
-                if (event.gui && event.gui.field_147002_h) Player.getPlayer().field_71070_bA = event.gui.field_147002_h;
+                if (event.gui && event.gui.field_147002_h) Player.toMC().field_71070_bA = event.gui.field_147002_h;
                 this.isInMuseum = true;
 
                 this.soopyGui.open();

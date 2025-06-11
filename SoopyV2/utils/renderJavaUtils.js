@@ -321,7 +321,7 @@ export class Waypoint extends FilledBox {
     constructor(x, y, z, r, g, b, { name = "", showDist = !!name, phase = false }) {
         this.rendering = false;
 
-        let distToPlayerSq = (x - Player.getRenderX()) ** 2 + (y - (Player.getRenderY() + Player.getPlayer()["func_70047_e"]())) ** 2 + (z - Player.getRenderZ()) ** 2;
+        let distToPlayerSq = (x - Player.getRenderX()) ** 2 + (y - (Player.getRenderY() + Player.toMC()["func_70047_e"]())) ** 2 + (z - Player.getRenderZ()) ** 2;
 
         let alpha = Math.min(1, Math.max(0, 1 - (distToPlayerSq - 10000) / 12500));
 
@@ -336,8 +336,8 @@ export class Waypoint extends FilledBox {
 
         let distRender = Math.min(distToPlayer, 50);
 
-        let loc5 = [Player.getRenderX() + (x + 0.5 - Player.getRenderX()) / (distToPlayer / distRender), Player.getRenderY() + Player.getPlayer()["func_70047_e"]() + (y + 2 + 20 * distToPlayer / 300 - (Player.getRenderY() + Player.getPlayer()["func_70047_e"]())) / (distToPlayer / distRender), Player.getRenderZ() + (z + 0.5 - Player.getRenderZ()) / (distToPlayer / distRender)];
-        let loc6 = [Player.getRenderX() + (x + 0.5 - Player.getRenderX()) / (distToPlayer / distRender), Player.getRenderY() + Player.getPlayer()["func_70047_e"]() + (y + 2 + 20 * distToPlayer / 300 - 10 * distToPlayer / 300 - (Player.getRenderY() + Player.getPlayer()["func_70047_e"]())) / (distToPlayer / distRender), Player.getRenderZ() + (z + 0.5 - Player.getRenderZ()) / (distToPlayer / distRender)];
+        let loc5 = [Player.getRenderX() + (x + 0.5 - Player.getRenderX()) / (distToPlayer / distRender), Player.getRenderY() + Player.toMC()["func_70047_e"]() + (y + 2 + 20 * distToPlayer / 300 - (Player.getRenderY() + Player.toMC()["func_70047_e"]())) / (distToPlayer / distRender), Player.getRenderZ() + (z + 0.5 - Player.getRenderZ()) / (distToPlayer / distRender)];
+        let loc6 = [Player.getRenderX() + (x + 0.5 - Player.getRenderX()) / (distToPlayer / distRender), Player.getRenderY() + Player.toMC()["func_70047_e"]() + (y + 2 + 20 * distToPlayer / 300 - 10 * distToPlayer / 300 - (Player.getRenderY() + Player.toMC()["func_70047_e"]())) / (distToPlayer / distRender), Player.getRenderZ() + (z + 0.5 - Player.getRenderZ()) / (distToPlayer / distRender)];
 
         this.textLine1 = new WorldText([loc5[0], loc5[1], loc5[2]], "\xA7a" + name, false, distRender / 12);
         this.textLine2 = new WorldText([name ? loc6[0] : loc5[0], name ? loc6[1] : loc5[1], name ? loc6[2] : loc5[2]], "\xA7b(" + numberWithCommas(Math.round(distToPlayer)) + "m)", false, distRender / 12);
@@ -346,7 +346,7 @@ export class Waypoint extends FilledBox {
     update() {
         let { x, y, z, r, g, b, name, showDist } = this.params;
 
-        let distToPlayerSq = (x - Player.getRenderX()) ** 2 + (y - (Player.getRenderY() + Player.getPlayer()["func_70047_e"]())) ** 2 + (z - Player.getRenderZ()) ** 2;
+        let distToPlayerSq = (x - Player.getRenderX()) ** 2 + (y - (Player.getRenderY() + Player.toMC()["func_70047_e"]())) ** 2 + (z - Player.getRenderZ()) ** 2;
 
         let alpha = Math.min(1, Math.max(0, 1 - (distToPlayerSq - 10000) / 12500));
 
@@ -358,8 +358,8 @@ export class Waypoint extends FilledBox {
 
             let distRender = Math.min(distToPlayer, 100);
 
-            let loc5 = [Player.getRenderX() + (x + 0.5 - Player.getRenderX()) / (distToPlayer / distRender), Player.getRenderY() + Player.getPlayer()["func_70047_e"]() + (y + 2 + 20 * distToPlayer / 300 - (Player.getRenderY() + Player.getPlayer()["func_70047_e"]())) / (distToPlayer / distRender), Player.getRenderZ() + (z + 0.5 - Player.getRenderZ()) / (distToPlayer / distRender)];
-            let loc6 = [Player.getRenderX() + (x + 0.5 - Player.getRenderX()) / (distToPlayer / distRender), Player.getRenderY() + Player.getPlayer()["func_70047_e"]() + (y + 2 + 20 * distToPlayer / 300 - 10 * distToPlayer / 300 - (Player.getRenderY() + Player.getPlayer()["func_70047_e"]())) / (distToPlayer / distRender), Player.getRenderZ() + (z + 0.5 - Player.getRenderZ()) / (distToPlayer / distRender)];
+            let loc5 = [Player.getRenderX() + (x + 0.5 - Player.getRenderX()) / (distToPlayer / distRender), Player.getRenderY() + Player.toMC()["func_70047_e"]() + (y + 2 + 20 * distToPlayer / 300 - (Player.getRenderY() + Player.toMC()["func_70047_e"]())) / (distToPlayer / distRender), Player.getRenderZ() + (z + 0.5 - Player.getRenderZ()) / (distToPlayer / distRender)];
+            let loc6 = [Player.getRenderX() + (x + 0.5 - Player.getRenderX()) / (distToPlayer / distRender), Player.getRenderY() + Player.toMC()["func_70047_e"]() + (y + 2 + 20 * distToPlayer / 300 - 10 * distToPlayer / 300 - (Player.getRenderY() + Player.toMC()["func_70047_e"]())) / (distToPlayer / distRender), Player.getRenderZ() + (z + 0.5 - Player.getRenderZ()) / (distToPlayer / distRender)];
 
             this.textLine1.setLocation([loc5[0], loc5[1], loc5[2]]).setScale(distRender / 12);
             this.textLine2.setLocation([name ? loc6[0] : loc5[0], name ? loc6[1] : loc5[1], name ? loc6[2] : loc5[2]]).setScale(distRender / 12).setText("\xA7b(" + numberWithCommas(Math.round(distToPlayer)) + "m)");

@@ -111,7 +111,7 @@ class Bestiary extends Feature {
         let entities = World.getAllEntitiesOfType(EntityArmorStand);
         for (let entity of entities) {
             let name = entity.getName();
-            let mcEntity = entity.entity;
+            let mcEntity = entity.toMC();
             let entityClass = null;
 
             let color = [0, 100, 100];

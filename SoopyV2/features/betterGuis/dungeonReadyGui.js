@@ -229,7 +229,7 @@ class DungeonReadyGui {
         if (this.soopyGui.ctGui.isOpen()) {
             if (!event.gui || !event.gui.field_147002_h) return;
 
-            Player.getPlayer().field_71070_bA = event.gui.field_147002_h;
+            Player.toMC().field_71070_bA = event.gui.field_147002_h;
             if (!Player.getContainer().getName().startsWith("Catacombs - Floor ")) return;
 
             event.gui = this.soopyGui.ctGui;
@@ -237,7 +237,7 @@ class DungeonReadyGui {
             return;
         }
         if (name === "Start Dungeon?" || name.startsWith("Catacombs - Floor ")) {
-            if (event.gui && event.gui.field_147002_h) Player.getPlayer().field_71070_bA = event.gui.field_147002_h;
+            if (event.gui && event.gui.field_147002_h) Player.toMC().field_71070_bA = event.gui.field_147002_h;
             this.soopyGui.open();
             event.gui = this.soopyGui.ctGui;
         }

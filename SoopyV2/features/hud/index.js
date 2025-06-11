@@ -542,7 +542,7 @@ class Hud extends Feature {
     }
 
     step() {
-        if (!Player.getPlayer()) return;
+        if (!Player.toMC()) return;
         let fps = 0;
 
         if (this.fpsEnabledSetting.getValue() && this.fpsFastSetting.getValue()) {
@@ -660,7 +660,7 @@ class Hud extends Feature {
             this.rainTimerElement.setText(text);
         }
 
-        if (Player.getPlayer()["func_110139_bj"]() > this.lastAbsorbtion) {
+        if (Player.toMC().getAbsorptionAmount() > this.lastAbsorbtion) {
             if (Date.now() - this.impactTest < 750) {
                 this.lastWitherImpact = Date.now();
                 this.impactTest = 0;
@@ -668,7 +668,7 @@ class Hud extends Feature {
                 this.aup = Date.now();
             }
         }
-        this.lastAbsorbtion = Player.getPlayer()["func_110139_bj"]();
+        this.lastAbsorbtion = Player.toMC().getAbsorptionAmount();
     }
 
     scan_pets() {
@@ -700,7 +700,7 @@ class Hud extends Feature {
         this.updateHudThingos();
 
         if (!this.soulflowEnabledSetting.getValue()) return;
-        if (!Player.getPlayer()) return;
+        if (!Player.toMC()) return;
         if (!Player.getInventory()) return;
 
         if (!this.FeatureManager.features["dataLoader"].class.isInSkyblock) {

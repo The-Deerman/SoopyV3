@@ -484,7 +484,7 @@ class Slayers extends Feature {
 
     entityAttackEvent(event) {
 
-        if (event.source.func_76346_g() === Player.getPlayer()) {
+        if (event.source.func_76346_g() === Player.toMC()) {
             if (event.entity instanceof this.EndermanEntity) {
                 World.getAllEntitiesOfType(this.ArmorStandEntity).forEach((e) => {
                     if (e.getName().includes("Voidgloom Seraph")) {

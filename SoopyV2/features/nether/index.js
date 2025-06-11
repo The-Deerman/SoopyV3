@@ -192,7 +192,7 @@ class Nether extends Feature {
         }
         if (this.inStamina && this.staminaCenterLoc) this.walls.push(...Wall.findNew(this.staminaCenterLoc));
 
-        let fishHook = Player.getPlayer()["field_71104_cf"];
+        let fishHook = Player.toMC()["field_71104_cf"];
 
         if (fishHook) {
             if (!this.hookThrown) this.hookThrown = Date.now();
@@ -405,7 +405,7 @@ class Nether extends Feature {
         }
 
         if (this.slugfishTimer.getValue()) {
-            let hook = Player.getPlayer()["field_71104_cf"];
+            let hook = Player.toMC()["field_71104_cf"];
 
             if (hook && this.hookThrown) {
                 let x = hook["field_70165_t"];
