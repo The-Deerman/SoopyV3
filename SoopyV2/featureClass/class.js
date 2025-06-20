@@ -12,7 +12,7 @@ class Feature {
         this.FeatureManager = undefined;
         this.events = {};
         this.customEvents = {};
-        this.forgeEvents = {};
+        // TODO replace with mixin: this.forgeEvents = {};
         this.soopyEvents = {};
         this.dynamicEvents = new Set;
 
@@ -31,7 +31,7 @@ class Feature {
     _onDisable() {
         Object.values(this.events).forEach((e) => this.FeatureManager.unregisterEvent(e));
         Object.values(this.customEvents).forEach((e) => this.FeatureManager.unregisterCustom(e));
-        Object.values(this.forgeEvents).forEach((e) => this.FeatureManager.unregisterForge(e));
+        // TODO replace with mixin: Object.values(this.forgeEvents).forEach((e) => this.FeatureManager.unregisterForge(e));
         Object.values(this.soopyEvents).forEach((e) => this.FeatureManager.unregisterSoopy(e));
 
         this.onDisable();
@@ -104,7 +104,8 @@ class Feature {
 
         delete this.soopyEvents[event.id];
     }
-
+// TODO replace with mixin: 
+    /*
     registerForge(event, func, priority) {
         let theEvent;
         try {
@@ -124,6 +125,7 @@ class Feature {
 
         delete this.forgeEvents[event.id];
     }
+    */
 
     registerChat(criteria, func) {
         let theEvent = this.FeatureManager.registerChat(criteria, func, this);

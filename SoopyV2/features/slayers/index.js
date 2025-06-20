@@ -425,17 +425,16 @@ class Slayers extends Feature {
             }
         });
 
-        this.registerForge(net.minecraftforge.event.entity.living.LivingAttackEvent, this.entityAttackEvent).registeredWhen(() => this.hasQuest && this.lastSlayerType === "enderman");
         this.renderEntityEvent = this.registerEvent("renderEntity", this.renderEntity);
         this.renderEntityEvent.unregister();
 
-        this.registerForge(net.minecraftforge.event.entity.EntityJoinWorldEvent, this.entityJoinWorldEvent).registeredWhen(() => this.hasQuest);
+        // TODO replace with mixin: this.registerForge(net.minecraftforge.event.entity.EntityJoinWorldEvent, this.entityJoinWorldEvent).registeredWhen(() => this.hasQuest);
         this.registerEvent("tick", this.tick);
         this.registerEvent("renderWorld", this.renderWorld);
         this.registerEvent("worldLoad", this.worldLoad);
         this.registerStep(true, 2, this.step);
         this.registerStep(true, 4, this.step_4fps);
-        this.registerForge(Java.type("net.minecraftforge.event.entity.living.EnderTeleportEvent"), this.emanTp).registeredWhen(() => this.inSkyblock() && this.disableEmanTp.getValue());
+        // TODO replace with mixin: this.registerForge(Java.type("net.minecraftforge.event.entity.living.EnderTeleportEvent"), this.emanTp).registeredWhen(() => this.inSkyblock() && this.disableEmanTp.getValue());
 
         this.formatNumber = (HPString) => {
             HPString = HPString.removeFormatting().replace("\u2764", "");

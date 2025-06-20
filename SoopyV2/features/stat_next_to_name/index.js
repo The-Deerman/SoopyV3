@@ -51,7 +51,7 @@ class StatNextToName extends Feature {
 
         this.registerStep(false, 3, this.loadPlayerStatsTick).registeredWhen(() => this.FeatureManager.features["dataLoader"].class.isInSkyblock);
         this.registerEvent("worldLoad", this.worldLoad);
-        this.registerEvent("playerJoined", this.playerJoined);
+        // TODO removed event:  this.registerEvent("playerJoined", this.playerJoined);
         this.worldLoad();
 
         this.registerStep(false, 5, () => {

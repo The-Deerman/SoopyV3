@@ -7,7 +7,7 @@ import metadata from "../metadata.js";
 import soopyV2Server from "../socketConnection";
 import NonPooledThread from "../utils/nonPooledThread";
 import { setRendering } from "../utils/renderJavaUtils";
-import { registerForge as registerForgeBase, unregisterForge as unregisterForgeBase } from "./forgeEvents.js";
+// TODO replace with mixin: import { registerForge as registerForgeBase, unregisterForge as unregisterForgeBase } from "./forgeEvents.js";
 
 const JSLoader = Java.type("com.chattriggers.ctjs.engine.langs.js.JSLoader");
 const UrlModuleSourceProvider = Java.type("org.mozilla.javascript.commonjs.module.provider.UrlModuleSourceProvider");
@@ -518,7 +518,6 @@ class FeatureManager {
         let event = this.registerCustom("chat", func, context);
 
         event.trigger.setChatCriteria(criteria);
-
         return event;
     }
 
@@ -593,7 +592,10 @@ class FeatureManager {
         return this.customEvents[id];
     }
 
+
     registerForge(event, func, priority, context) {
+        // TODO replace with mixin: 
+    /*
         let id = this.lastForgeEventId++;
 
         this.forgeEvents[id] = {
@@ -623,12 +625,16 @@ class FeatureManager {
 
 
         return this.forgeEvents[id];
+        */
     }
 
     unregisterForge(event) {
+        // TODO replace with mixin: 
+    /*
         if (!this.forgeEvents[event.id]) return;
         unregisterForgeBase(this.forgeEvents[event.id].trigger);
         delete this.forgeEvents[event.id];
+    */
     }
 
     unregisterCustom(event) {

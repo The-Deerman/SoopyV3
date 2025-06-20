@@ -1,10 +1,12 @@
-importClass(net.minecraftforge.common.MinecraftForge);
-importPackage(net.minecraftforge.fml.common.eventhandler);
-importPackage(org.objectweb.asm);
-importClass(java.lang.ClassLoader);
-importClass(org.apache.commons.lang3.RandomStringUtils);
-importClass(java.util.function.Consumer);
-importClass(net.minecraftforge.fml.common.eventhandler.EventPriority);
+
+// TODO replace all usages with Mixins
+//importClass(net.minecraftforge.common.MinecraftForge);
+//importPackage(net.minecraftforge.fml.common.eventhandler);
+//importPackage(org.objectweb.asm);
+//importClass(java.lang.ClassLoader);
+//importClass(org.apache.commons.lang3.RandomStringUtils);
+//importClass(java.util.function.Consumer);
+//importClass(net.minecraftforge.fml.common.eventhandler.EventPriority);
 
 const L = (s) => `L${s};`;
 const LoadedInsts = [];

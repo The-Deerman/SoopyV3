@@ -114,7 +114,7 @@ class Events extends Feature {
         this.registerStep(false, 5, this.step_5s);
 
         this.registerEvent("soundPlay", this.playSound).registeredWhen(() => this.showingWaypoints);
-        this.registerForge(net.minecraftforge.event.entity.EntityJoinWorldEvent, this.entityJoinWorldEvent).registeredWhen(() => this.showingWaypoints);
+        // TODO replace with mixin: this.registerForge(net.minecraftforge.event.entity.EntityJoinWorldEvent, this.entityJoinWorldEvent).registeredWhen(() => this.showingWaypoints);
 
         this.registerChat("&r&eYou dug out a Griffin Burrow! &r&7(${*}/4)&r", this.burrialClicked);
         this.registerChat("&r&eYou finished the Griffin burrow chain! &r&7(4/4)&r", this.burrialClicked);
