@@ -412,7 +412,7 @@ class Nether extends Feature {
                 let y = hook["field_70163_u"];
                 let z = hook["field_70161_v"];
 
-                Tessellator.drawString(((Date.now() - this.hookThrown) / 1000).toFixed(1) + "s", x, y + 0.5, z, Renderer.color(0, 255, 50), false, 0.025, false);
+                Tessellator.drawString(((Date.now() - this.hookThrown) / 1000).toFixed(1) + "s", x, y + 0.5, z, Renderer.getColor(0, 255, 50), false, 0.025, false);
             }
         }
 

@@ -323,16 +323,16 @@ class LocationSetting extends ButtonSetting {
         let width = this.getWidth();
         let height = this.parent.getHeight(true);
 
-        Renderer.drawRect(Renderer.color(255, 255, 255), this.x, this.y, width * this.scale, 1);
-        Renderer.drawRect(Renderer.color(255, 255, 255), this.x, this.y, 1, height * this.scale);
-        Renderer.drawRect(Renderer.color(255, 255, 255), this.x, this.y + height * this.scale, width * this.scale, 1);
-        Renderer.drawRect(Renderer.color(255, 255, 255), this.x + width * this.scale, this.y, 1, height * this.scale);
+        Renderer.drawRect(Renderer.getColor(255, 255, 255), this.x, this.y, width * this.scale, 1);
+        Renderer.drawRect(Renderer.getColor(255, 255, 255), this.x, this.y, 1, height * this.scale);
+        Renderer.drawRect(Renderer.getColor(255, 255, 255), this.x, this.y + height * this.scale, width * this.scale, 1);
+        Renderer.drawRect(Renderer.getColor(255, 255, 255), this.x + width * this.scale, this.y, 1, height * this.scale);
 
         if (drawHandles) {
-            Renderer.drawRect(Renderer.color(255, 255, 255), this.x - 1 * Math.max(1, this.scale) + width * this.scale, this.y - 1 * Math.max(1, this.scale), 2 * Math.max(1, this.scale) + 1, 2 * Math.max(1, this.scale) + 1);
-            Renderer.drawRect(Renderer.color(255, 255, 255), this.x - 1 * Math.max(1, this.scale), this.y - 1 * Math.max(1, this.scale) + height * this.scale, 2 * Math.max(1, this.scale) + 1, 2 * Math.max(1, this.scale) + 1);
-            Renderer.drawRect(Renderer.color(255, 255, 255), this.x - 1 * Math.max(1, this.scale) + width * this.scale, this.y - 1 * Math.max(1, this.scale) + height * this.scale, 2 * Math.max(1, this.scale) + 1, 2 * Math.max(1, this.scale) + 1);
-            Renderer.drawRect(Renderer.color(255, 255, 255), this.x - 1 * Math.max(1, this.scale), this.y - 1 * Math.max(1, this.scale), 2 * Math.max(1, this.scale) + 1, 2 * Math.max(1, this.scale) + 1);
+            Renderer.drawRect(Renderer.getColor(255, 255, 255), this.x - 1 * Math.max(1, this.scale) + width * this.scale, this.y - 1 * Math.max(1, this.scale), 2 * Math.max(1, this.scale) + 1, 2 * Math.max(1, this.scale) + 1);
+            Renderer.drawRect(Renderer.getColor(255, 255, 255), this.x - 1 * Math.max(1, this.scale), this.y - 1 * Math.max(1, this.scale) + height * this.scale, 2 * Math.max(1, this.scale) + 1, 2 * Math.max(1, this.scale) + 1);
+            Renderer.drawRect(Renderer.getColor(255, 255, 255), this.x - 1 * Math.max(1, this.scale) + width * this.scale, this.y - 1 * Math.max(1, this.scale) + height * this.scale, 2 * Math.max(1, this.scale) + 1, 2 * Math.max(1, this.scale) + 1);
+            Renderer.drawRect(Renderer.getColor(255, 255, 255), this.x - 1 * Math.max(1, this.scale), this.y - 1 * Math.max(1, this.scale), 2 * Math.max(1, this.scale) + 1, 2 * Math.max(1, this.scale) + 1);
         }
     }
 }

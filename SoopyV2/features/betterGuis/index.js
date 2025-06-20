@@ -181,10 +181,10 @@ class BetterGuis extends Feature {
         let manaPercent = this.mana.get() / totalAmt;
         let ofPercent = this.overflowMana.get() / totalAmt;
 
-        Renderer.drawRect(Renderer.color(0, 0, 0), 0, 0, 80, 10);
-        Renderer.drawRect(Renderer.color(50, 50, 50), 2, 2, 76, 6);
-        Renderer.drawRect(Renderer.color(0, 0, 255), 2, 2, manaPercent * 76, 6);
-        Renderer.drawRect(Renderer.color(0, 255, 255), 2 + manaPercent * 76, 2, ofPercent * 76, 6);
+        Renderer.drawRect(Renderer.getColor(0, 0, 0), 0, 0, 80, 10);
+        Renderer.drawRect(Renderer.getColor(50, 50, 50), 2, 2, 76, 6);
+        Renderer.drawRect(Renderer.getColor(0, 0, 255), 2, 2, manaPercent * 76, 6);
+        Renderer.drawRect(Renderer.getColor(0, 255, 255), 2 + manaPercent * 76, 2, ofPercent * 76, 6);
         Renderer.retainTransforms(false);
     }
 
@@ -203,10 +203,10 @@ class BetterGuis extends Feature {
         let abPercent = Player.asPlayerMP().getAbsorption() / totalAmt;
 
 
-        Renderer.drawRect(Renderer.color(0, 0, 0), 0, 0, 80, 10);
-        Renderer.drawRect(Renderer.color(50, 50, 50), 2, 2, 76, 6);
-        Renderer.drawRect(Renderer.color(255, 0, 0), 2, 2, hpPercent * 76, 6);
-        Renderer.drawRect(Renderer.color(255, 255, 0), 2 + hpPercent * 76, 2, abPercent * 76, 6);
+        Renderer.drawRect(Renderer.getColor(0, 0, 0), 0, 0, 80, 10);
+        Renderer.drawRect(Renderer.getColor(50, 50, 50), 2, 2, 76, 6);
+        Renderer.drawRect(Renderer.getColor(255, 0, 0), 2, 2, hpPercent * 76, 6);
+        Renderer.drawRect(Renderer.getColor(255, 255, 0), 2 + hpPercent * 76, 2, abPercent * 76, 6);
 
         Renderer.retainTransforms(false);
     }
@@ -247,7 +247,7 @@ class BetterGuis extends Feature {
         if (slotMatches && Date.now() - slotMatches.timestamp < 500) {
             if (!slotMatches.isMatching) {
                 Renderer.translate(0, 0, 100);
-                Renderer.drawRect(Renderer.color(0, 0, 0, 200), slot.getDisplayX(), slot.getDisplayY(), 16, 16);
+                Renderer.drawRect(Renderer.getColor(0, 0, 0, 200), slot.getDisplayX(), slot.getDisplayY(), 16, 16);
             }
             return;
         }
@@ -264,7 +264,7 @@ class BetterGuis extends Feature {
         this.slotMatches.set(slot.getIndex(), { isMatching, timestamp: Date.now() });
         if (!isMatching) {
             Renderer.translate(0, 0, 100);
-            Renderer.drawRect(Renderer.color(0, 0, 0, 200), slot.getDisplayX(), slot.getDisplayY(), 16, 16);
+            Renderer.drawRect(Renderer.getColor(0, 0, 0, 200), slot.getDisplayX(), slot.getDisplayY(), 16, 16);
         }
     }
 

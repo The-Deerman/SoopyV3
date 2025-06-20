@@ -51,7 +51,7 @@ class MuseumGui {
                 this.weaponsIndicator.setColorOffset(-20, -20, -20, 100);
 
                 Renderer.translate(0, 0, 100);
-                Renderer.drawRect(Renderer.color(0, 0, 0, 100), this.weaponsIndicator.location.getXExact(), this.weaponsIndicator.location.getYExact(), this.weaponsIndicator.location.getWidthExact(), this.weaponsIndicator.location.getHeightExact());
+                Renderer.drawRect(Renderer.getColor(0, 0, 0, 100), this.weaponsIndicator.location.getXExact(), this.weaponsIndicator.location.getYExact(), this.weaponsIndicator.location.getWidthExact(), this.weaponsIndicator.location.getHeightExact());
                 let clicks = Player.getContainer().getName() === "Your Museum" ? "1" : "2";
                 Renderer.translate(0, 0, 100);
                 renderLibs.drawStringCenteredFull(clicks, this.weaponsIndicator.location.getXExact() + this.weaponsIndicator.location.getWidthExact() / 2, this.weaponsIndicator.location.getYExact() + this.weaponsIndicator.location.getHeightExact() / 2, Math.min(this.weaponsIndicator.location.getWidthExact() / Renderer.getStringWidth(clicks) / 4, this.weaponsIndicator.location.getHeightExact() / 4 / 2));
@@ -86,7 +86,7 @@ class MuseumGui {
                 this.armourIndicator.setColorOffset(-20, -20, -20, 100);
 
                 Renderer.translate(0, 0, 100);
-                Renderer.drawRect(Renderer.color(0, 0, 0, 100), this.armourIndicator.location.getXExact(), this.armourIndicator.location.getYExact(), this.armourIndicator.location.getWidthExact(), this.armourIndicator.location.getHeightExact());
+                Renderer.drawRect(Renderer.getColor(0, 0, 0, 100), this.armourIndicator.location.getXExact(), this.armourIndicator.location.getYExact(), this.armourIndicator.location.getWidthExact(), this.armourIndicator.location.getHeightExact());
                 let clicks = Player.getContainer().getName() === "Your Museum" ? "1" : "2";
                 Renderer.translate(0, 0, 100);
                 renderLibs.drawStringCenteredFull(clicks, this.armourIndicator.location.getXExact() + this.armourIndicator.location.getWidthExact() / 2, this.armourIndicator.location.getYExact() + this.armourIndicator.location.getHeightExact() / 2, Math.min(this.armourIndicator.location.getWidthExact() / Renderer.getStringWidth(clicks) / 4, this.armourIndicator.location.getHeightExact() / 4 / 2));
@@ -121,7 +121,7 @@ class MuseumGui {
                 this.raritiesIndicator.setColorOffset(-20, -20, -20, 100);
 
                 Renderer.translate(0, 0, 100);
-                Renderer.drawRect(Renderer.color(0, 0, 0, 100), this.raritiesIndicator.location.getXExact(), this.raritiesIndicator.location.getYExact(), this.raritiesIndicator.location.getWidthExact(), this.raritiesIndicator.location.getHeightExact());
+                Renderer.drawRect(Renderer.getColor(0, 0, 0, 100), this.raritiesIndicator.location.getXExact(), this.raritiesIndicator.location.getYExact(), this.raritiesIndicator.location.getWidthExact(), this.raritiesIndicator.location.getHeightExact());
                 let clicks = Player.getContainer().getName() === "Your Museum" ? "1" : "2";
                 Renderer.translate(0, 0, 100);
                 renderLibs.drawStringCenteredFull(clicks, this.raritiesIndicator.location.getXExact() + this.raritiesIndicator.location.getWidthExact() / 2, this.raritiesIndicator.location.getYExact() + this.raritiesIndicator.location.getHeightExact() / 2, Math.min(this.raritiesIndicator.location.getWidthExact() / Renderer.getStringWidth(clicks) / 4, this.raritiesIndicator.location.getHeightExact() / 4 / 2));
@@ -156,7 +156,7 @@ class MuseumGui {
                 this.specialIndicator.setColorOffset(-20, -20, -20, 100);
 
                 Renderer.translate(0, 0, 100);
-                Renderer.drawRect(Renderer.color(0, 0, 0, 100), this.specialIndicator.location.getXExact(), this.specialIndicator.location.getYExact(), this.specialIndicator.location.getWidthExact(), this.specialIndicator.location.getHeightExact());
+                Renderer.drawRect(Renderer.getColor(0, 0, 0, 100), this.specialIndicator.location.getXExact(), this.specialIndicator.location.getYExact(), this.specialIndicator.location.getWidthExact(), this.specialIndicator.location.getHeightExact());
                 let clicks = Player.getContainer().getName() === "Your Museum" ? "1" : "2";
                 Renderer.translate(0, 0, 100);
                 renderLibs.drawStringCenteredFull(clicks, this.specialIndicator.location.getXExact() + this.specialIndicator.location.getWidthExact() / 2, this.specialIndicator.location.getYExact() + this.specialIndicator.location.getHeightExact() / 2, Math.min(this.specialIndicator.location.getWidthExact() / Renderer.getStringWidth(clicks) / 4, this.specialIndicator.location.getHeightExact() / 4 / 2));
@@ -644,7 +644,7 @@ class MuseumGui {
                     if (child.hovered) {
                         child.setColorOffset(-20, -20, -20, 100);
                         Renderer.translate(0, 0, 100);
-                        Renderer.drawRect(Renderer.color(0, 0, 0, 100), child.location.getXExact(), child.location.getYExact(), child.location.getWidthExact(), child.location.getHeightExact());
+                        Renderer.drawRect(Renderer.getColor(0, 0, 0, 100), child.location.getXExact(), child.location.getYExact(), child.location.getWidthExact(), child.location.getHeightExact());
                         let clicks = "?";
                         let currPage, pageNum;
                         if (Player.getContainer().getName().includes("/")) {
@@ -787,7 +787,7 @@ class MuseumGui {
                 if (item.hovered) {
                     item.setColorOffset(-20, -20, -20, 100);
                     Renderer.translate(0, 0, 100);
-                    Renderer.drawRect(Renderer.color(0, 0, 0, 100), item.location.getXExact(), item.location.getYExact(), item.location.getWidthExact(), item.location.getHeightExact());
+                    Renderer.drawRect(Renderer.getColor(0, 0, 0, 100), item.location.getXExact(), item.location.getYExact(), item.location.getWidthExact(), item.location.getHeightExact());
 
                     let clicks = "?";
                     let currPage, pageNum;

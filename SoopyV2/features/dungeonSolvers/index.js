@@ -941,7 +941,7 @@ class DungeonSolvers extends Feature {
                 shifts++;
             }
 
-            Tessellator.drawString(((time - Date.now()) / 1000).toFixed(1) + "s", position.getX(), position.getY() + 0.5, position.getZ(), Renderer.color(0, 255, 50), false, 0.025, false);
+            Tessellator.drawString(((time - Date.now()) / 1000).toFixed(1) + "s", position.getX(), position.getY() + 0.5, position.getZ(), Renderer.getColor(0, 255, 50), false, 0.025, false);
         }
         for (let i = 0; i < shifts; i++)this.timersData.shift();
 
@@ -951,7 +951,7 @@ class DungeonSolvers extends Feature {
             for (let e of es) {
                 if (e.getEntity().func_110143_aJ() < 1000) continue;
 
-                Tessellator.drawString(addNotation("oneLetters", Math.round(e.getEntity().func_110143_aJ())), e.getX(), e.getY() + 0.25, e.getZ(), Renderer.color(0, 255, 0), false, 0.1, false);
+                Tessellator.drawString(addNotation("oneLetters", Math.round(e.getEntity().func_110143_aJ())), e.getX(), e.getY() + 0.25, e.getZ(), Renderer.getColor(0, 255, 0), false, 0.1, false);
             }
         }
     }
