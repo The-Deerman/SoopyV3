@@ -1,6 +1,17 @@
 import fetch from "../../SoopyV2/utils/networkUtils"; import Promise from "../../PromiseV2";
 const NBTTagString = Java.type("net.minecraft.nbt.NBTTagString");
 
+const mapHexToCode = {
+    "#000000":"&0", "#0000AA":"&1", "#00AA00":"&2", "#00AAAA":"&3",
+    "#AA0000":"&4", "#AA00AA":"&5", "#FFAA00":"&6", "#AAAAAA":"&7",
+    "#555555":"&8", "#5555FF":"&9", "#55FF55":"&a", "#55FFFF":"&b",
+    "#FF5555":"&c", "#FF55FF":"&d", "#FFFF55":"&e", "#FFFFFF":"&f",
+    "black":"&0", "dark_blue":"&1", "dark_green":"&2", "dark_aqua":"&3",
+    "dark_red":"&4", "dark_purple":"&5", "gold":"&6", "gray":"&7",
+    "dark_gray":"&8", "blue":"&9", "green":"&a", "aqua":"&b",
+    "red":"&c", "light_purple":"&d", "yellow":"&e", "white":"&f",
+}
+
 let utils = {
     addLore: function (item, prefix, value) {
         const list = item.
@@ -158,6 +169,30 @@ let utils = {
                     })()
             })
         }).then(() => { })
+    },
+
+    toLegacyString: function(textComponent) {
+        let text = textComponent.getString()
+        let style = textComponent.getStyle()
+        if (style.isEmpty()) return text
+        
+        let color = style.getColor()?.getName()
+        let formatting = "&r";
+        formatting += (mapHexToCode[color] ?? "") +
+            (style.isBold() ? "&l" : "") +
+            (style.isItalic() ? "&o" : "") +
+            (style.isUnderlined() ? "&n" : "") +
+            (style.isStrikethrough() ? "&m" : "") +
+            (style.isObfuscated() ? "&k" : "");
+
+        return formatting + text
+    },
+
+    toLegacyText: function(textComponent) {
+        let literalStyleList = textComponent.withoutStyle() // Turns it into a list that includes siblings
+        let text = ""
+        for (let component of literalStyleList) {text += utils.toLegacyString(component)}
+        return text
     }
 };
 
