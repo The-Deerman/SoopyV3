@@ -173,7 +173,7 @@ class BetterGuis extends Feature {
         let left = Renderer.screen.getWidth() / 2 + 91 - 80;
         let top = Renderer.screen.getHeight() - 40;
 
-        Renderer.retainTransforms(true);
+        Renderer.pushMatrix();
         Renderer.translate(left, top);
 
         let totalAmt = Math.max(this.maxMana.get(), this.mana.get() + this.overflowMana.get());
@@ -185,7 +185,7 @@ class BetterGuis extends Feature {
         Renderer.drawRect(Renderer.getColor(50, 50, 50), 2, 2, 76, 6);
         Renderer.drawRect(Renderer.getColor(0, 0, 255), 2, 2, manaPercent * 76, 6);
         Renderer.drawRect(Renderer.getColor(0, 255, 255), 2 + manaPercent * 76, 2, ofPercent * 76, 6);
-        Renderer.retainTransforms(false);
+        Renderer.popMatrix();
     }
 
     renderHealth(event) {
@@ -194,7 +194,7 @@ class BetterGuis extends Feature {
         let left = Renderer.screen.getWidth() / 2 - 91;
         let top = Renderer.screen.getHeight() - 40;
 
-        Renderer.retainTransforms(true);
+        Renderer.pushMatrix();
         Renderer.translate(left, top);
 
         let totalAmt = Math.max(Player.asPlayerMP().getMaxHP(), Player.getHP() + Player.asPlayerMP().getAbsorption());
@@ -208,7 +208,7 @@ class BetterGuis extends Feature {
         Renderer.drawRect(Renderer.getColor(255, 0, 0), 2, 2, hpPercent * 76, 6);
         Renderer.drawRect(Renderer.getColor(255, 255, 0), 2 + hpPercent * 76, 2, abPercent * 76, 6);
 
-        Renderer.retainTransforms(false);
+        Renderer.popMatrix();
     }
 
     postGuiRender(x, y, gui) {

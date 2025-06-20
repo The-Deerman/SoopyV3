@@ -427,7 +427,7 @@ class PowderAndScatha extends Feature {
             let y = this.PowderOverlayElement.locationSetting.y
             let scale = this.PowderOverlayElement.locationSetting.scale
 
-            Renderer.retainTransforms(true)
+            Renderer.pushMatrix()
             Renderer.scale(scale)
             Renderer.translate(x / scale, y / scale)
 
@@ -439,7 +439,7 @@ class PowderAndScatha extends Feature {
                 Renderer.drawStringWithShadow(l, width - Renderer.getStringWidth(l), 10 * i)
             })
 
-            Renderer.retainTransforms(false)
+            Renderer.popMatrix()
         }
 
         if (this.scathaCounterElement?.isEnabled()) {
@@ -449,7 +449,7 @@ class PowderAndScatha extends Feature {
             let y2 = this.scathaCounterElement.locationSetting.y
             let scale2 = this.scathaCounterElement.locationSetting.scale
 
-            Renderer.retainTransforms(true)
+            Renderer.pushMatrix()
             Renderer.scale(scale2)
             Renderer.translate(x2 / scale2, y2 / scale2)
 
@@ -461,7 +461,7 @@ class PowderAndScatha extends Feature {
                 Renderer.drawStringWithShadow(l, width2 - Renderer.getStringWidth(l), 10 * i)
             })
 
-            Renderer.retainTransforms(false)
+            Renderer.popMatrix()
         }
     }
 
