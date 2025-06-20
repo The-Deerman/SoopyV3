@@ -108,7 +108,7 @@ class DungeonSolvers extends Feature {
 
         this.lastDungFinishes = [];
         this.lastDungExps = [];
-        this.registerChat("${start}+&r&3${exp} Catacombs Experience&r", (start, exp) => {
+        this.registerChat("${start}+&r&3${exp} Catacombs Experience", (start, exp) => {
             if (ChatLib.removeFormatting(start).replace(/ /gi, "").length > 0) return;
             this.lastDungExps.push(parseFloat(exp.replace(/,/gi, "")));
             if (this.lastDungExps.length > 5) {
@@ -138,7 +138,7 @@ class DungeonSolvers extends Feature {
         this.spiritMask = new ToggleSetting("Spirit Mask Proc'ed Alert", "Enable this to change the message", true, "spirit_mask_alert", this).requires(this.bonzoSpiritMaskTimer);
         this.spiritMaskMessage = new TextSetting("Spirit Mask Proc'ed Message", "change spirit mask proc message here", "&cSpirit Mask Used", "spirit_mask_alert_message", this, "&cSpirit Mask Used", false).requires(this.spiritMask);
 
-        this.registerChat("&r&aYour &r&9Bonzo's Mask &r&asaved your life!&r", () => {
+        this.registerChat("&r&aYour &r&9Bonzo's Mask &r&asaved your life!", () => {
             this.eraseBonzoTimer = false;
             if (this.bonzoSpiritMaskTimer.getValue()) {
                 this.bonzoMaskTimer = Date.now() + this.bonzoMaskCooldown * 1000;
@@ -149,7 +149,7 @@ class DungeonSolvers extends Feature {
             }
         });
 
-        this.registerChat("&r&aYour &r&9\u269A Bonzo's Mask &r&asaved your life!&r", () => {
+        this.registerChat("&r&aYour &r&9\u269A Bonzo's Mask &r&asaved your life!", () => {
             this.eraseBonzoTimer = false;
             if (this.bonzoSpiritMaskTimer.getValue()) {
                 this.fraggedBonzoMaskTimer = Date.now() + this.bonzoMaskCooldown * 1000;
@@ -160,7 +160,7 @@ class DungeonSolvers extends Feature {
             }
         });
 
-        this.registerChat("&r&6Second Wind Activated&r&a! &r&aYour Spirit Mask saved your life!&r", () => {
+        this.registerChat("&r&6Second Wind Activated&r&a! &r&aYour Spirit Mask saved your life!", () => {
             if (this.bonzoSpiritMaskTimer.getValue()) {
                 if (this.spiritMaskOutsideDungeon.getValue() ? true : !this.eraseBonzoTimer) {
                     this.spiritMaskTimer = Date.now() + 30 * 1000;
@@ -223,12 +223,12 @@ class DungeonSolvers extends Feature {
         });
 
         this.spiritBowPickUps = [];
-        this.registerChat("&r&aYou picked up the &r&5Spirit Bow&r&a! Use it to attack &r&cThorn&r&a!&r", () => {
+        this.registerChat("&r&aYou picked up the &r&5Spirit Bow&r&a! Use it to attack &r&cThorn&r&a!", () => {
             this.spiritBowPickUps.push(Date.now());
         });
 
         this.bearSpawning = 0;
-        this.registerChat("&r&a&lThe &r&5&lSpirit Bow &r&a&lhas dropped!&r", () => {
+        this.registerChat("&r&a&lThe &r&5&lSpirit Bow &r&a&lhas dropped!", () => {
             this.bearSpawning = -Date.now();
         });
 
@@ -291,7 +291,7 @@ class DungeonSolvers extends Feature {
         this.goneInBonus = false;
         this.mimicDead = false;
         this.inBoss = false;
-        this.registerChat("&r&cThe &r&c&lBLOOD DOOR&r&c has been opened!&r", () => {
+        this.registerChat("&r&cThe &r&c&lBLOOD DOOR&r&c has been opened!", () => {
             this.bloodOpenedBonus = true;
             this.goneInBonus = true;
         });
@@ -325,7 +325,7 @@ class DungeonSolvers extends Feature {
             });
         });
 
-        this.registerChat("&r&aDungeon starts in 1 second.&r", () => {
+        this.registerChat("&r&aDungeon starts in 1 second.", () => {
             this.goneInBonus = false;
             this.bloodOpenedBonus = false;
 
@@ -333,7 +333,7 @@ class DungeonSolvers extends Feature {
             this.firstDeathHadSpirit = false;
         });
 
-        this.registerChat("&r&aDungeon starts in 1 second. Get ready!&r", () => {
+        this.registerChat("&r&aDungeon starts in 1 second. Get ready!", () => {
             this.goneInBonus = false;
             this.bloodOpenedBonus = false;
 

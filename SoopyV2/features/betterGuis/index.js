@@ -106,9 +106,9 @@ class BetterGuis extends Feature {
             "Active Effects"
         ];
 
-        this.registerChat("&r&aDungeon starts in 1 second.&r", () =>
+        this.registerChat("&r&aDungeon starts in 1 second.", () =>
             this.dungeonReady.readyInOneSecond.call(this.dungeonReady));
-        this.registerChat("&r&aDungeon starts in 1 second. Get ready!&r", () =>
+        this.registerChat("&r&aDungeon starts in 1 second. Get ready!", () =>
             this.dungeonReady.readyInOneSecond.call(this.dungeonReady));
         this.registerEvent("guiMouseClick", this.guiClicked);
         this.registerEvent("guiOpened", (event) => {
@@ -116,10 +116,10 @@ class BetterGuis extends Feature {
             if (this.dungeonReadyGuiEnabled.getValue()) this.dungeonReady.guiOpened.call(this.dungeonReady, event);
         });
         this.registerEvent("worldLoad", () => this.dungeonReady.reset());
-        this.registerChat("&e${*} &r&cThe Catacombs &r&ewith &r&9${players}/5 players &r&eon &r${*}&r", (players) => {
+        this.registerChat("&e${*} &r&cThe Catacombs &r&ewith &r&9${players}/5 players &r&eon &r${*}", (players) => {
             if (this.dungeonReadyGuiEnabled.getValue()) this.dungeonReady.joinedDungeon.call(this.dungeonReady, ~~players);
         });
-        this.registerChat("&eSkyBlock Dungeon Warp &r&7(${players} players)&r", (players) => {
+        this.registerChat("&eSkyBlock Dungeon Warp &r&7(${players} players)", (players) => {
             if (this.dungeonReadyGuiEnabled.getValue()) this.dungeonReady.joinedDungeon.call(this.dungeonReady, ~~players);
         });
         this.registerStep(true, 10, this.step);

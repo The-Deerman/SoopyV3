@@ -87,22 +87,22 @@ class Mining extends Feature {
         this.registerEvent("itemTooltip", this.itemTooltipEvent).registeredWhen(() => this.showContainedGemstoneSlots.getValue() || this.showUnlockedGemstoneSlots.getValue());
         this.registerEvent("renderWorld", this.renderWorld).registeredWhen(() => this.guessBalHp.getValue() || this.metalDetectorSolver.getValue());
 
-        this.registerChat("&r&6&lRARE DROP! &r&eA Bal Pet dropped!&r", () => {
+        this.registerChat("&r&6&lRARE DROP! &r&eA Bal Pet dropped!", () => {
             if (this.balPetAlert.getValue()) {
                 World.playSound("random.orb", 1, 1);
                 Client.showTitle("\xA7r\xA7c\xA7o\xA7r\xA76\xA7lRARE DROP! \xA7r\xA7eA Bal Pet dropped!\xA7r", "", 20, 50, 20);
             }
         });
-        this.registerChat("&r&c&oThe bosses outer shell looks to be weakening!&r", () => {
+        this.registerChat("&r&c&oThe bosses outer shell looks to be weakening!", () => {
             this.balHP = 200;
         });
-        this.registerChat("&r&c&oHalf way there! The boss is starting to become weaker!&r", () => {
+        this.registerChat("&r&c&oHalf way there! The boss is starting to become weaker!", () => {
             this.balHP = 125;
         });
-        this.registerChat("&r&c&oNearly there! The boss is shaking it can't last much longer!&r", () => {
+        this.registerChat("&r&c&oNearly there! The boss is shaking it can't last much longer!", () => {
             this.balHP = 75;
         });
-        this.registerChat("&r&c&oThe boss looks weak and tired and retreats into the lava...&r", () => {
+        this.registerChat("&r&c&oThe boss looks weak and tired and retreats into the lava...", () => {
             this.balHP = 0;
         });
 
@@ -110,7 +110,7 @@ class Mining extends Feature {
         let money = 0;
         let gemstoneCosts = {};
         let lastMined = 0;
-        this.registerChat("&r&d&lPRISTINE! &r&fYou found &r${*} Flawed ${type} Gemstone &r&8x${num}&r&f!&r", (type, num, event) => {
+        this.registerChat("&r&d&lPRISTINE! &r&fYou found &r${*} Flawed ${type} Gemstone &r&8x${num}&r&f!", (type, num, event) => {
 
             let id = "FLAWED_" + type.toUpperCase() + "_GEM";
             let number = parseInt(num);
@@ -170,13 +170,13 @@ class Mining extends Feature {
             lastWorldChange = Date.now();
         });
 
-        this.registerChat("&r&f${spaces}&r&${color}&l${event} ENDED!&r", (spaces, color, event) => {
+        this.registerChat("&r&f${spaces}&r&${color}&l${event} ENDED!", (spaces, color, event) => {
             if (Date.now() - lastWorldChange < 5000) return;
             if (!this.isInCH()) return;
 
             socketConnection.sendCHEventData(event.trim(), false);
         });
-        this.registerChat("&r&f${spaces}&r&${color}&l${event} STARTED!&r", (spaces, color, event) => {
+        this.registerChat("&r&f${spaces}&r&${color}&l${event} STARTED!", (spaces, color, event) => {
             if (Date.now() - lastWorldChange < 5000) return;
             if (!this.isInCH()) return;
 
@@ -258,7 +258,7 @@ class Mining extends Feature {
         });
         registerActionBar.trigger.setCriteria("TREASURE: ${rest}").setParameter("contains");
 
-        this.registerChat("&r&aYou found${*}with your &r&cMetal Detector&r&a!&r", () => {
+        this.registerChat("&r&aYou found${*}with your &r&cMetal Detector&r&a!", () => {
             if (this.predictedChestLocations[0]) ignoreLocation = this.predictedChestLocations[0].join(",");
             this.predictedChestLocations = [];
         });

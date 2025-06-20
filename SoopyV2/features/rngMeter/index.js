@@ -154,7 +154,7 @@ class rngMeter extends Feature {
         this.registerStep(true, 3, this.resetMeterAlertStep);
         this.registerStep(true, 2, this.updateLastSlayerType);
 
-        this.registerChat("   &dRNG Meter &f- &d${xp} Stored XP&r", (xp, e) => {
+        this.registerChat("   &dRNG Meter &f- &d${xp} Stored XP", (xp, e) => {
             xp = Number(xp.replace(/,/gi, ""))
             this.rngMeterData.slayer[this.lastSlayerType].currentMeter = xp
             let item = this.rngMeterData.slayer[this.lastSlayerType].chosenItem
@@ -168,7 +168,7 @@ class rngMeter extends Feature {
             this.saveMeterData();
         })
 
-        this.registerChat("&r&aYou set your &r${slayerType} RNG Meter &r&ato drop &r${item}&r&a!&r", (slayerType, item, e) => {
+        this.registerChat("&r&aYou set your &r${slayerType} RNG Meter &r&ato drop &r${item}&r&a!", (slayerType, item, e) => {
             if (item.startsWith("&aEnchanted Book")) item = item.split("(")[1].split(")")[0]
             if (item && this.tempItem) {
                 if (item.removeFormatting().toLowerCase() === this.tempItem.removeFormatting().toLowerCase()) this.tempItem = ""

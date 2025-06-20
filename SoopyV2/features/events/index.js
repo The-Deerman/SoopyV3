@@ -116,8 +116,8 @@ class Events extends Feature {
         this.registerEvent("soundPlay", this.playSound).registeredWhen(() => this.showingWaypoints);
         // TODO replace with mixin: this.registerForge(net.minecraftforge.event.entity.EntityJoinWorldEvent, this.entityJoinWorldEvent).registeredWhen(() => this.showingWaypoints);
 
-        this.registerChat("&r&eYou dug out a Griffin Burrow! &r&7(${*}/4)&r", this.burrialClicked);
-        this.registerChat("&r&eYou finished the Griffin burrow chain! &r&7(4/4)&r", this.burrialClicked);
+        this.registerChat("&r&eYou dug out a Griffin Burrow! &r&7(${*}/4)", this.burrialClicked);
+        this.registerChat("&r&eYou finished the Griffin burrow chain! &r&7(4/4)", this.burrialClicked);
         this.inquisWaypointSpawned = false;
 
         this.registerEvent("tick", () => {
@@ -162,9 +162,9 @@ class Events extends Feature {
         this.registerEvent("guiMouseClick", this.abiSolverGuiClick).registeredWhen(() => this.abiphoneSolver.getValue());
         this.registerEvent("postGuiRender", this.abiSolverGuiRender).registeredWhen(() => this.abiphoneSolver.getValue());
         this.registerEvent("guiOpened", this.abiSolverGuiOpen).registeredWhen(() => this.abiphoneSolver.getValue());
-        this.registerChat("&r&aThe target is around &r&e${height} blocks below&r&a, at a &r&b${angle} degrees &r&aangle!&r", (a, b) => this.mobAt(a, b, false));
-        this.registerChat("&r&aThe target is around &r&e${height} blocks above&r&a, at a &r&b${angle} degrees &r&aangle!&r", (a, b) => this.mobAt(a, b, true));
-        this.registerChat("&r&aReturn to the Trapper soon to get a new animal to hunt!&r", () => {
+        this.registerChat("&r&aThe target is around &r&e${height} blocks below&r&a, at a &r&b${angle} degrees &r&aangle!", (a, b) => this.mobAt(a, b, false));
+        this.registerChat("&r&aThe target is around &r&e${height} blocks above&r&a, at a &r&b${angle} degrees &r&aangle!", (a, b) => this.mobAt(a, b, true));
+        this.registerChat("&r&aReturn to the Trapper soon to get a new animal to hunt!", () => {
             this.trackerData = [];
         });
         this.registerEvent("renderWorld", this.drawTrackerStuff);
@@ -184,7 +184,7 @@ class Events extends Feature {
         registerActionBar.trigger.setCriteria("&b${curr}/${max}\u270E").setParameter("contains");
 
         let zaps = 0;
-        this.registerChat("&eZapped ${blokc} &eblocks! &a&lUNDO&r", () => {
+        this.registerChat("&eZapped ${blokc} &eblocks! &a&lUNDO", () => {
             zaps++;
             if (zaps === 20) {
                 if (this.dropZapperFarmCooldown.getValue()) {

@@ -203,7 +203,7 @@ class Slayers extends Feature {
                 }
             }
         });
-        this.registerChat("&r&5&lENDER NODE! &r&fYou found &r&cEndermite Nest&r&f!&r", () => {
+        this.registerChat("&r&5&lENDER NODE! &r&fYou found &r&cEndermite Nest&r&f!", () => {
             if (this.nestedEndermiteAlert.getValue()) {
                 Client.showTitle("&cNested Endermite!", "", 0, 60, 20);
                 World.playSound("random.orb", 1, 1);
@@ -238,7 +238,7 @@ class Slayers extends Feature {
         this.lastSlayerType = "";
         this.lastSlayerExp = 0;
         this.lastBossSlain = 0;
-        this.registerChat("&r  &r&a&lSLAYER QUEST COMPLETE!&r", (e) => {
+        this.registerChat("&r  &r&a&lSLAYER QUEST COMPLETE!", (e) => {
             socketConnection.sendSlayerSpawnData({ loc: null });
             this.lastSlayerExps.push(this.lastSlayerExp);
             if (this.lastSlayerExps.length > 5) {
@@ -282,7 +282,7 @@ class Slayers extends Feature {
             this.lastBossSlain = Date.now();
         });
 
-        this.registerChat("&r  &r&c&lSLAYER QUEST FAILED!&r", () => {
+        this.registerChat("&r  &r&c&lSLAYER QUEST FAILED!", () => {
             socketConnection.sendSlayerSpawnData({ loc: null });
         });
         this.bossSlainMessage = false;
@@ -298,7 +298,7 @@ class Slayers extends Feature {
             this.apiLoad(this.FeatureManager.features["dataLoader"].class.lastApiData.skyblock, "skyblock", true, true);
         }
 
-        this.registerChat("&r&aYou have spawned your ${soul} &r&asoul! &r&d(${mana} Mana)&r", (soul, mana) => {
+        this.registerChat("&r&aYou have spawned your ${soul} &r&asoul! &r&d(${mana} Mana)", (soul, mana) => {
             if (!this.summonFeatureMaster.getValue()) {
                 return;
             } else if (!this.summonsHideNametag.getValue() && !this.summonHPGuiElement.getValue() && !this.summonsLowWarning.getValue()) {
@@ -309,7 +309,7 @@ class Slayers extends Feature {
             }
         });
 
-        this.registerChat("&r&cYou have despawned your monsters!&r", () => {
+        this.registerChat("&r&cYou have despawned your monsters!", () => {
             this.summonAtHPShouldWarn = 0;
             this.canCaptureSummonHPInfo = false;
             this.shouldWarn = false;

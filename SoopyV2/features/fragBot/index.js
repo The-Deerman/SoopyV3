@@ -26,7 +26,7 @@ class FragBot extends Feature {
         this.registerStep(false, 5, this.step).registeredWhen(() => this.hostingFragBot);
         this.registerStep(true, 2, this.step2).registeredWhen(() => this.hostingFragBot);
 
-        this.registerChat("&9&m---------------------------${*}&r&9\n&r${player} &r&ehas invited you to join their party!\n&r&eYou have &r&c60 &r&eseconds to accept. &r&6Click here to join!&r&9\n&r&9&m----------------------------${*}&r", this.recievedPartyInvite);
+        this.registerChat("&9&m---------------------------${*}&r&9\n&r${player} &r&ehas invited you to join their party!\n&r&eYou have &r&c60 &r&eseconds to accept. &r&6Click here to join!&r&9\n&r&9&m----------------------------${*}", this.recievedPartyInvite);
     }
 
     step() {

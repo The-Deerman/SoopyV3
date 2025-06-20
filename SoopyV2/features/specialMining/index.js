@@ -89,7 +89,7 @@ class PowderAndScatha extends Feature {
             Prehistoric_Egg: "&fPrehistoric Egg"
         }
         
-        this.registerChat("&r    &r${thing}&r", (thing, e) => {
+        this.registerChat("&r    &r${thing}", (thing, e) => {
             if (!this.inCrystalHollows()) return;
             if (!this.openedChest) return;
             if (this.hideGemstoneMessage.getValue() && thing.includes("Gemstone") && !thing.includes("Powder") && (this.showFlawlessGemstone.getValue() ? !thing.includes("Flawless") : true)) {
@@ -166,7 +166,7 @@ class PowderAndScatha extends Feature {
             if (!this.inCrystalHollows()) return;
             if (this.hideRewards.getValue()) cancel(event);
         })
-        this.registerChat("&r", (event) => {
+        this.registerChat("", (event) => {
             if (!this.inCrystalHollows()) return;
             if (this.hideRewards.getValue() && this.openedChest) cancel(event);
         })
@@ -248,12 +248,12 @@ class PowderAndScatha extends Feature {
             ChatLib.chat(this.FeatureManager.messagePrefix + "Successfully reset powder data.")
         }, this)
 
-        this.registerChat("&r&aYou uncovered a treasure chest!&r", (e) => {
+        this.registerChat("&r&aYou uncovered a treasure chest!", (e) => {
             if (this.chestUncoverAlert.getValue()) Client.showTitle("&aTreasure Chest!", "", 0, 60, 20);
             if (this.chestUncoverAlertSound.getValue()) World.playSound("random.levelup", 1, 1);
         })
 
-        this.registerChat("${space}&r&b&l2X POWDER ${status}!&r", (space, status, e) => {
+        this.registerChat("${space}&r&l&b2X POWDER ${status}!", (space, status, e) => {
             if (status.removeFormatting() === "STARTED") {
                 this.dPowder = Date.now() + 15 * 1000 * 60
             } else this.dPowder = 0
@@ -276,7 +276,7 @@ class PowderAndScatha extends Feature {
 
         this.lastPowderReceived = { mithril: 0, gemstone: 0 }
         this.lastPowderReceivedExecuted = false;
-        this.registerChat("&r    &r&2Mithril Powder &r&8x${amount}&r", (amount, e) => {
+        this.registerChat("&r    &r&2Mithril Powder &r&8x${amount}", (amount, e) => {
             if (!this.inCrystalHollows()) return;
             let p = (this.dPowder ? 2 : 1) * parseInt(amount.replace(",", ""))
             this.miningData.powder.mithril += p
@@ -286,7 +286,7 @@ class PowderAndScatha extends Feature {
                 this.compactPowderChat();
             }
         })
-        this.registerChat("&r    &r&dGemstone Powder &r&8x${amount}&r", (amount, e) => {
+        this.registerChat("&r    &r&dGemstone Powder &r&8x${amount}", (amount, e) => {
             if (!this.inCrystalHollows()) return;
             let p = (this.dPowder ? 2 : 1) * parseInt(amount.replace(",", ""))
             this.miningData.powder.gemstone += p
@@ -374,7 +374,7 @@ class PowderAndScatha extends Feature {
         this.registerCommand("ss", (thing, value) => this.scathaCmd(thing, value), this.scathaCmdComp);
 
         this.wormSpawnedWarn = new ToggleSetting("Worm/Scatha Spawned Alert", "make a title and a sound when a worm/scatha spawned", false, "worm_spawned_alert", this).requires(this.scathaMain);
-        this.registerChat("&r&7&oYou hear the sound of something approaching...&r", this.wormSpawning);
+        this.registerChat("&r&7&oYou hear the sound of something approaching...", this.wormSpawning);
         this.wormSpawnedChatMessage = new ToggleSetting("Worm/Scatha Spawned Chat Message", "if a chat info should be sent when a worm/scatha spawned", false, "worm_spawned_chat_message", this).requires(this.scathaMain);
         this.petDroppedAlert = new ToggleSetting("Pet Dropped Alert", "Big title when a scatha pet dropped", false, "scatha_pet_dropped_alert", this).requires(this.scathaMain);
         this.colorToRarity = { 9: "rare", 5: "epic", 6: "legendary" }
