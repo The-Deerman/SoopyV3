@@ -136,6 +136,7 @@ class GlobalSettings extends Feature {
             }
         });
 
+        /* TODO maybe causes java.lang.StackOverflowError:
         this.warps = JSON.parse(FileLib.read("SoopyV2", "features/globalSettings/warps.json"));
 
         this.registerCommand("warp", (...name) => {
@@ -144,6 +145,7 @@ class GlobalSettings extends Feature {
         }, (args) => {
             return this.warps.filter((v) => v.toLowerCase().startsWith(args[0]));
         });
+        */
 
         this.registerStep(true, 4, this.mobThings);
 
