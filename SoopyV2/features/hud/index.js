@@ -11,7 +11,7 @@ import { getLevelByXp } from "../../utils/statUtils";
 import { firstLetterCapital } from "../../utils/stringUtils";
 import renderLibs from "../../../guimanager/renderLibs";
 import { addNotation, basiclyEqual, numberWithCommas, timeNumber, timeNumber2 } from "../../utils/numberUtils.js";
-import { formatTime, getLore } from "../../utils/utils";
+import { formatTime, getLore, toLegacyText } from "../../utils/utils";
 const ProcessBuilder = Java.type("java.lang.ProcessBuilder");
 const Scanner = Java.type("java.util.Scanner");
 
@@ -340,8 +340,10 @@ class Hud extends Feature {
 
         this.petText = "&6Pet&7> &fLoading...";
         this.petElement.setText(this.petText);
-            this.petText = "&6Pet&7> " + new Message(event).getMessageParts()[0].getHoverValue().match(/§r§aEquip: (.+)\n/)[1].replace(/\xA7r/g, "");
         this.registerChat("&r&cAutopet &eequipped your ${*}&e! &a&lVIEW RULE", (event) => {
+            let hoverEvent = event.message.getStyle().getHoverEvent()
+            let textComponent = hoverEvent.getValue(hoverEvent.getAction())
+            this.petText = "&6Pet&7> " + toLegacyText(textComponent).match(/&r&aEquip: (.+)(?:\n|$)/)[1].replace(/&r/g, "");
             this.petElement.setText(this.petText);
             this.lastSwappedPet = Date.now();
         });
@@ -677,12 +679,12 @@ class Hud extends Feature {
             for (let item of inv) {
                 let itemName = item?.getName();
                 if (itemName?.includes("[Lvl ") && Date.now() - this.lastSwappedPet > 1000) {
-		    let lore = getLore(item);
+                    let lore = getLore(item);
                     for (let line of lore) {
                         if (line.includes("Click to despawn!")) {
                             this.petText = `&6Pet&7> &7${itemName.split("(")[0]}`;
                             this.petElement.setText(this.petText);
-			    return;
+                            return;
                         }
                     }                 
                 }
