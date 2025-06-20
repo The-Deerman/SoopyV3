@@ -7,6 +7,7 @@ import *as numberUtils from "../../utils/numberUtils";
 import DropdownSetting from "../settings/settingThings/dropdownSetting";
 import ToggleSetting from "../settings/settingThings/toggle";
 import NonPooledThread from "../../utils/nonPooledThread";
+import { toLegacyText } from "../../utils/utils.js";
 
 class StatNextToName extends Feature {
     constructor() {
@@ -131,9 +132,12 @@ class StatNextToName extends Feature {
     }
 
     updatePlayerNametag(player) {
+        // actual players have a UUID version of 4
+        if (player.getUUID().version() != 4) {return;}
         let stats = this.userStats[player.getUUID().toString().replace(/-/g, "")];
-	let nameTagString = player.getDisplayName().getText().match(`§.${player.getName()}`);
-	if (!nameTagString) {return;}
+
+        let nameTagString = toLegacyText(player.toMC().getDisplayName()).replace(/ &r&2\[.*\]$/, "");
+        if (!nameTagString) {return;}
 
         nameTagString += " &2[";
         if (stats.usingSoopyv2) nameTagString += "&d\u269D&2";
