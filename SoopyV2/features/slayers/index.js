@@ -425,6 +425,7 @@ class Slayers extends Feature {
             }
         });
 
+        // TODO replace with mixin: this.registerForge(net.minecraftforge.event.entity.living.LivingAttackEvent, this.entityAttackEvent).registeredWhen(() => this.hasQuest && this.lastSlayerType === "enderman");
         this.renderEntityEvent = this.registerEvent("renderEntity", this.renderEntity);
         this.renderEntityEvent.unregister();
 
