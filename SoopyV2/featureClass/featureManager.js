@@ -9,7 +9,8 @@ import NonPooledThread from "../utils/nonPooledThread";
 import { setRendering } from "../utils/renderJavaUtils";
 // TODO replace with mixin: import { registerForge as registerForgeBase, unregisterForge as unregisterForgeBase } from "./forgeEvents.js";
 
-const JSLoader = Java.type("com.chattriggers.ctjs.engine.langs.js.JSLoader");
+const JSLoader = Java.type("com.chattriggers.ctjs.internal.engine.JSLoader");
+
 const UrlModuleSourceProvider = Java.type("org.mozilla.javascript.commonjs.module.provider.UrlModuleSourceProvider");
 const UrlModuleSourceProviderInstance = new UrlModuleSourceProvider(null, null);
 const StrongCachingModuleScriptProviderClass = Java.type("org.mozilla.javascript.commonjs.module.provider.StrongCachingModuleScriptProvider");
